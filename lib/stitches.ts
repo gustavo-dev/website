@@ -23,6 +23,7 @@ export const { styled, getCssText, createTheme } = createStitches({
             bodyText: gray.gray10,
             linkText: gray.gray10,
             themeSwitcherBg: '#444',
+            icons: '#000',
         },
         fontSizes: {
             1: '0.875rem',
@@ -36,8 +37,10 @@ export const { styled, getCssText, createTheme } = createStitches({
         },
         lineHeights: {
             1: 1,
-            2: '1.75rem',
-            3: '2.25rem',
+            2: 1.15,
+            3: 1.5,
+            4: 1.175,
+            5: 2.25,
         },
         sizes: {
             1: 4,
@@ -122,7 +125,9 @@ export const { styled, getCssText, createTheme } = createStitches({
         pb: (value: string | number) => ({
             paddingBottom: value,
         }),
-
+        pr: (value: string | number) => ({
+            paddingRight: value,
+        }),
         // A property for applying width/height together
         size: (value: string | number) => ({
             width: value,
@@ -133,16 +138,23 @@ export const { styled, getCssText, createTheme } = createStitches({
         br: (value: string | number) => ({
             borderRadius: value,
         }),
+        avatarSize: (value: string | number) => ({
+            minWidth: value,
+            minHeight: value,
+            maxWidth: value,
+            maxHeight: value,
+        }),
     },
 })
 
 export const darkTheme = createTheme({
     colors: {
-        bg: grayDark.gray1,
-        primaryText: '#FFF',
+        bg: '#151515',
+        primaryText: '#FFFFFF',
         secondaryText: '#EAEAEA',
-        bodyText: grayDark.gray10,
+        bodyText: '#898989',
         linkText: grayDark.gray10,
         themeSwitcherBg: '#444',
+        icons: '#FFFFFF',
     },
 })

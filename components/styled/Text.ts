@@ -5,9 +5,9 @@ export const Title = styled('h1', {
 
     fontSize: '$6',
     fontWeight: 700,
-    lineHeight: '$3',
+    lineHeight: '$5',
 
-    letterSpacing: '-.025rem',
+    letterSpacing: '-.025em',
 
     '@md': {
         fontSize: '$8',
@@ -15,9 +15,23 @@ export const Title = styled('h1', {
     },
 })
 
-export const Subtitle = styled('h2', {})
+export const Subtitle = styled('h2', {
+    fontSize: '$2',
+    fontWeight: 400,
+    color: '$secondaryText',
+
+    lineHeight: '$3',
+})
 
 export const SectionTitle = styled('h3', {})
+
+export const BodyText = styled('p', {
+    fontSize: '$2',
+    fontWeight: 400,
+    color: '$bodyText',
+
+    lineHeight: '$3',
+})
 
 export const NavLink = styled('a', {
     display: 'none',
@@ -29,6 +43,6 @@ export const NavLink = styled('a', {
 
     borderRadius: '$1',
 
-    '@sm': { display: 'block' },
+    '@md': { display: 'block' },
     variants: { selected: { true: { color: '$secondaryText' } } },
 })

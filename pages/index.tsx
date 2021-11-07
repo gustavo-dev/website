@@ -93,8 +93,8 @@ const Home: NextPage = () => {
                                         programming
                                     </Subtitle>
                                     <BodyText>
-                                        Just studying programming before going
-                                        to college. I'm into web development :)
+                                        Studying programming before going to
+                                        college. In love with web development :)
                                     </BodyText>
                                 </HeroText>
                                 <ImageRoot>

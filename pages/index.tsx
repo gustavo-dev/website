@@ -3,13 +3,12 @@ import Image from 'next/image'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Header } from 'components/Header'
-import { Background } from 'components/styled/Background'
 import { Container } from 'components/styled/Container'
 import { BodyText, Subtitle, Title } from 'components/styled/Text'
-import { Scrollable } from 'components/styled/Scrollable'
 
 import { styled } from 'lib/stitches'
 import * as Avatar from '@radix-ui/react-avatar'
+import { Layout } from 'components/styled/Layout'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -76,46 +75,44 @@ const Home: NextPage = () => {
             <Head>
                 <title>Gustavo Vargas</title>
             </Head>
-            <Background>
-                <Scrollable>
-                    <Container>
-                        <Header />
-                        <main>
-                            <Hero>
-                                <HeroText css={{ mb: '4rem' }}>
-                                    <Title
-                                        css={{
-                                            mb: '.5rem',
-                                            ml: '-.1rem',
-                                            '@md': { mb: '.75rem' },
-                                        }}
-                                    >
-                                        Gustavo Vargas
-                                    </Title>
-                                    <Subtitle css={{ mb: '1rem' }}>
-                                        High school student, 17 y.o in love with
-                                        programming
-                                    </Subtitle>
-                                    <BodyText>
-                                        Studying programming before going to
-                                        college. In love with web development :)
-                                    </BodyText>
-                                </HeroText>
-                                <ImageRoot>
-                                    <StyledImage
-                                        src="/images/me.png"
-                                        alt="Gustavo Vargas"
-                                        layout="fill"
-                                    />
-                                    <StyledFallback delayMs={600}>
-                                        GV
-                                    </StyledFallback>
-                                </ImageRoot>
-                            </Hero>
-                        </main>
-                    </Container>
-                </Scrollable>
-            </Background>
+            <Container>
+                <Layout>
+                    <Header />
+                    <main>
+                        <Hero>
+                            <HeroText css={{ mb: '4rem' }}>
+                                <Title
+                                    css={{
+                                        mb: '.5rem',
+                                        ml: '-.1rem',
+                                        '@md': { mb: '.75rem' },
+                                    }}
+                                >
+                                    Gustavo Vargas
+                                </Title>
+                                <Subtitle css={{ mb: '1rem' }}>
+                                    High school student, 17 y.o in love with
+                                    programming
+                                </Subtitle>
+                                <BodyText>
+                                    Studying programming before going to
+                                    college. In love with web development :)
+                                </BodyText>
+                            </HeroText>
+                            <ImageRoot>
+                                <StyledImage
+                                    src="/images/me.png"
+                                    alt="Gustavo Vargas"
+                                    layout="fill"
+                                />
+                                <StyledFallback delayMs={600}>
+                                    GV
+                                </StyledFallback>
+                            </ImageRoot>
+                        </Hero>
+                    </main>
+                </Layout>
+            </Container>
         </>
     )
 }

@@ -4,8 +4,7 @@ export const Container = styled('div', {
     background: '$bg',
     color: '$bodyText',
 
-    width: '100vw',
-    height: '100vh',
+    size: '100%',
 
     overflow: 'hidden auto',
 

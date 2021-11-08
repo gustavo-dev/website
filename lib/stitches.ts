@@ -6,6 +6,7 @@ import {
     mauveDark,
     mintDark,
     pinkDark,
+    amberDark,
 } from '@radix-ui/colors'
 
 export const { styled, getCssText, createTheme, globalCss } = createStitches({
@@ -16,6 +17,7 @@ export const { styled, getCssText, createTheme, globalCss } = createStitches({
             ...mauveDark,
             ...mintDark,
             ...pinkDark,
+            ...amberDark,
             pathWall: mintDark.mint10,
             bg: gray.gray1,
             primaryText: gray.gray12,

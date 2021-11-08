@@ -1,5 +1,5 @@
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
-import { NavLink } from 'components/styled/Text'
+import { NavLink } from 'components/NavLink'
 import { styled } from 'lib/stitches'
 
 import { SunIcon } from '@radix-ui/react-icons'
@@ -8,6 +8,9 @@ const Container = styled('header', {
     display: 'flex',
 
     boxSizing: 'border-box',
+
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
     py: '2rem',
 
@@ -19,12 +22,15 @@ const Container = styled('header', {
 const NavBar = styled('nav', {
     display: 'flex',
 
-    justifyContent: 'space-between',
     alignItems: 'center',
 
     width: '100%',
 
     mx: 'auto',
+
+    '@md': {
+        ml: '-.75rem',
+    },
 })
 
 const Hamburger = styled('div', {
@@ -66,16 +72,15 @@ export const Header: React.FC = () => {
     return (
         <Container>
             <NavBar>
-                <div>
-                    <Hamburger>
-                        <HamburgerMenuIcon scale={2} />
-                    </Hamburger>
-                    <NavLink selected>Home</NavLink>
-                </div>
-                <ThemeSwitcher aria-label="Toggle Dark Mode" type="button">
-                    <SunIcon />
-                </ThemeSwitcher>
+                <Hamburger>
+                    <HamburgerMenuIcon scale={2} />
+                </Hamburger>
+                <NavLink href="/" text="Home" />
+                <NavLink href="/blog" text="Blog" />
             </NavBar>
+            <ThemeSwitcher aria-label="Toggle Dark Mode" type="button">
+                <SunIcon />
+            </ThemeSwitcher>
         </Container>
     )
 }

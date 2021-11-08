@@ -32,17 +32,3 @@ export const BodyText = styled('p', {
 
     lineHeight: '$3',
 })
-
-export const NavLink = styled('a', {
-    display: 'none',
-
-    fontSize: '$2',
-    fontWeight: 600,
-
-    color: '$linkText',
-
-    borderRadius: '$1',
-
-    '@md': { display: 'block' },
-    variants: { selected: { true: { color: '$secondaryText' } } },
-})

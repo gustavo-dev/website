@@ -8,8 +8,6 @@
         "start": "next start",
         "lint": "next lint",
         "prepare": "husky install",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook",
         "commit": "git commit -m ''"
     },
     "dependencies": {
@@ -29,10 +27,6 @@
     },
     "devDependencies": {
         "@babel/core": "^7.15.8",
-        "@storybook/addon-actions": "next",
-        "@storybook/addon-essentials": "next",
-        "@storybook/addon-links": "next",
-        "@storybook/react": "next",
         "@types/react": "17.0.20",
         "@types/react-dom": "^17.0.9",
         "@typescript-eslint/eslint-plugin": "^5.2.0",

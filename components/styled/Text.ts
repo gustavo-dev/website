@@ -23,7 +23,12 @@ export const Subtitle = styled('h2', {
     lineHeight: '$3',
 })
 
-export const SectionTitle = styled('h3', {})
+export const SectionTitle = styled('h3', {
+    color: 'white',
+    fontSize: '$5',
+
+    '@md': { fontSize: '$7' },
+})
 
 export const BodyText = styled('p', {
     fontSize: '$2',

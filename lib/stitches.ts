@@ -8,7 +8,7 @@ import {
     pinkDark,
 } from '@radix-ui/colors'
 
-export const { styled, getCssText, createTheme } = createStitches({
+export const { styled, getCssText, createTheme, globalCss } = createStitches({
     theme: {
         colors: {
             ...grayDark,
@@ -36,11 +36,11 @@ export const { styled, getCssText, createTheme } = createStitches({
             8: '3rem',
         },
         lineHeights: {
-            1: 1,
-            2: 1.15,
-            3: 1.5,
-            4: 1.175,
-            5: 2.25,
+            1: '1rem',
+            2: '1.15rem',
+            3: '1.5rem',
+            4: '1.175rem',
+            5: '2.25rem',
         },
         sizes: {
             1: 4,

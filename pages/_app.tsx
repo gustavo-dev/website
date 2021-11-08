@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { IdProvider } from '@radix-ui/react-id'
-import { globalCss } from '@stitches/react'
-import { darkTheme } from 'lib/stitches'
+import { darkTheme, globalCss } from 'lib/stitches'
 
 const globalStyle = globalCss({
     '*': {
@@ -18,7 +17,6 @@ const globalStyle = globalCss({
 
 function MyApp({ Component, pageProps }: AppProps) {
     globalStyle()
-
     return (
         <div className={darkTheme}>
             <IdProvider>

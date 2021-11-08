@@ -11,7 +11,7 @@ export const Title = styled('h1', {
 
     '@md': {
         fontSize: '$8',
-        lineHeight: '$1',
+        lineHeight: 1,
     },
 })
 

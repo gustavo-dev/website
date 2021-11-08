@@ -2,6 +2,8 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { NavLink } from 'components/styled/Text'
 import { styled } from 'lib/stitches'
 
+import { SunIcon } from '@radix-ui/react-icons'
+
 const Container = styled('header', {
     display: 'flex',
 
@@ -29,8 +31,10 @@ const Hamburger = styled('div', {
     display: 'flex',
     alignItems: 'center',
 
-    size: 40,
+    size: 30,
     color: '$icons',
+
+    cursor: 'pointer',
 
     '@md': { display: 'none' },
 })
@@ -39,9 +43,23 @@ const ThemeSwitcher = styled('button', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    size: '1.875rem',
+
+    cursor: 'pointer',
+
+    boxSizing: 'border-box',
+
+    size: '2rem',
+
     borderRadius: '$1',
     background: '$themeSwitcherBg',
+
+    color: 'White',
+
+    transition: 'all 150ms ease-out',
+
+    '&:hover': {
+        boxShadow: '0 0 1px 3px white',
+    },
 })
 
 export const Header: React.FC = () => {
@@ -54,7 +72,9 @@ export const Header: React.FC = () => {
                     </Hamburger>
                     <NavLink selected>Home</NavLink>
                 </div>
-                <ThemeSwitcher aria-label="Toggle Dark Mode" />
+                <ThemeSwitcher aria-label="Toggle Dark Mode" type="button">
+                    <SunIcon />
+                </ThemeSwitcher>
             </NavBar>
         </Container>
     )

@@ -84,7 +84,11 @@ const Home: NextPage = () => {
                             <Hero>
                                 <HeroText css={{ mb: '4rem' }}>
                                     <Title
-                                        css={{ mb: '.85rem', ml: '-.25rem' }}
+                                        css={{
+                                            mb: '.5rem',
+                                            ml: '-.1rem',
+                                            '@md': { mb: '.75rem' },
+                                        }}
                                     >
                                         Gustavo Vargas
                                     </Title>

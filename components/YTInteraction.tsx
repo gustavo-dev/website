@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { motion, useAnimation, Variants } from 'framer-motion'
+import { styled } from 'lib/stitches'
 
-interface YTIteraction {
+interface YTInteraction {
     circular?: boolean
 }
 
 const variants_background: Variants = {
     background: {
-        opacity: 0.1,
+        opacity: 0.3,
         transition: {
             duration: 0.1,
         },
@@ -15,24 +16,66 @@ const variants_background: Variants = {
     background_followup: {
         opacity: 0,
         transition: {
-            duration: 0.3,
+            duration: 0.4,
         },
     },
 }
 const variants_border: Variants = {
     border: {
-        opacity: 0.2,
+        opacity: 0.4,
         transition: {
-            duration: 0,
+            duration: 0.05,
         },
     },
     border_followup: {
         opacity: 0,
-        transition: { duration: 0.5 },
+        transition: { duration: 0.4 },
     },
 }
 
-export const YTIteraction: React.FC<YTIteraction> = ({ children }) => {
+const ComponentWrapper = styled('div', {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    position: 'relative',
+    size: '100%',
+})
+
+const IteractionWrapper = styled('div', {
+    display: 'inline-block',
+    position: 'absolute',
+    inset: 0,
+
+    size: '100%',
+})
+const Iteraction = styled(motion.div, {
+    position: 'absolute',
+    inset: 0,
+
+    size: '100%',
+
+    boxSizing: 'border-box',
+
+    variants: {
+        circular: { true: { borderRadius: '$full' } },
+        border: {
+            true: {
+                border: '1px solid white',
+            },
+        },
+        background: {
+            true: {
+                backgroundColor: 'white',
+            },
+        },
+    },
+})
+
+export const YTInteraction: React.FC<YTInteraction> = ({
+    circular,
+    children,
+}) => {
     const [entered, setEntered] = useState(false)
     const controls = useAnimation()
 
@@ -55,24 +98,28 @@ export const YTIteraction: React.FC<YTIteraction> = ({ children }) => {
     }
 
     return (
-        <div
+        <ComponentWrapper
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={onMouseLeave}
         >
             {children}
-            <div>
-                <motion.div
+            <IteractionWrapper>
+                <Iteraction
+                    border
+                    circular={circular}
                     initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_border}
                 />
-                <motion.div
+                <Iteraction
+                    background
+                    circular={circular}
                     initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_background}
                 />
-            </div>
-        </div>
+            </IteractionWrapper>
+        </ComponentWrapper>
     )
 }

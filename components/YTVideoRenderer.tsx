@@ -1,4 +1,4 @@
-import { YTIteraction } from 'components/YTInteraction'
+import { YTInteraction } from 'components/YTInteraction'
 import { styled } from 'lib/stitches'
 
 const RendererWrapper = styled('div', {})
@@ -13,9 +13,9 @@ const Renderer = styled('div', {
 export const YTVideoRenderer: React.FC = ({ children }) => {
     return (
         <RendererWrapper>
-            <YTIteraction>
+            <YTInteraction>
                 <Renderer>{children}</Renderer>
-            </YTIteraction>
+            </YTInteraction>
         </RendererWrapper>
     )
 }

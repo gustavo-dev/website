@@ -13,17 +13,21 @@ const StyledLink = styled('a', {
     fontSize: '$2',
     fontWeight: 400,
 
+    textDecoration: 'none',
+
     color: '$linkText',
 
     borderRadius: '.5rem',
 
     p: '.5rem .75rem',
 
-    '@md': { display: 'block' },
+    transition: 'background 200ms ease-in',
 
     '&:hover': {
         background: '$gray4',
     },
+
+    '@md': { display: 'block' },
 
     variants: {
         isActive: {

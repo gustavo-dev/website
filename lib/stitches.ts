@@ -9,7 +9,18 @@ import {
     amberDark,
 } from '@radix-ui/colors'
 
-export const { styled, getCssText, createTheme, globalCss } = createStitches({
+export const {
+    styled,
+    getCssText,
+    createTheme,
+    globalCss,
+    css,
+    config,
+    keyframes,
+    prefix,
+    reset,
+    theme,
+} = createStitches({
     theme: {
         colors: {
             ...grayDark,
@@ -22,8 +33,8 @@ export const { styled, getCssText, createTheme, globalCss } = createStitches({
             bg: gray.gray1,
             primaryText: gray.gray12,
             secondaryText: gray.gray11,
-            bodyText: gray.gray10,
-            linkText: gray.gray10,
+            bodyText: gray.gray11,
+            linkText: gray.gray11,
             themeSwitcherBg: '#444',
             icons: '#000',
         },
@@ -155,7 +166,7 @@ export const darkTheme = createTheme({
         primaryText: '#FFFFFF',
         secondaryText: '#EAEAEA',
         bodyText: '#898989',
-        linkText: grayDark.gray10,
+        linkText: '#898989',
         themeSwitcherBg: '#444',
         icons: '#FFFFFF',
     },

@@ -3,6 +3,7 @@ import { NavLink } from 'components/NavLink'
 import { styled } from 'lib/stitches'
 
 import { SunIcon } from '@radix-ui/react-icons'
+import { YTInteraction } from 'components/YTInteraction'
 
 const Container = styled('header', {
     display: 'flex',
@@ -36,11 +37,16 @@ const NavBar = styled('nav', {
 const Hamburger = styled('div', {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
 
-    size: 30,
+    position: 'relative',
+
+    size: 40,
     color: '$icons',
 
     cursor: 'pointer',
+
+    ml: '-.8rem',
 
     '@md': { display: 'none' },
 })
@@ -54,18 +60,12 @@ const ThemeSwitcher = styled('button', {
 
     boxSizing: 'border-box',
 
-    size: '2rem',
+    size: '2.25rem',
 
-    borderRadius: '$1',
-    background: '$themeSwitcherBg',
+    mr: '-.2rem',
 
     color: 'White',
-
-    transition: 'all 150ms ease-out',
-
-    '&:hover': {
-        boxShadow: '0 0 1px 3px white',
-    },
+    background: 'transparent',
 })
 
 export const Header: React.FC = () => {
@@ -73,13 +73,17 @@ export const Header: React.FC = () => {
         <Container>
             <NavBar>
                 <Hamburger>
-                    <HamburgerMenuIcon scale={2} />
+                    <YTInteraction circular>
+                        <HamburgerMenuIcon />
+                    </YTInteraction>
                 </Hamburger>
                 <NavLink href="/" text="Home" />
                 <NavLink href="/blog" text="Blog" />
             </NavBar>
             <ThemeSwitcher aria-label="Toggle Dark Mode" type="button">
-                <SunIcon />
+                <YTInteraction circular>
+                    <SunIcon />
+                </YTInteraction>
             </ThemeSwitcher>
         </Container>
     )

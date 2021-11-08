@@ -2,11 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { BodyText, Subtitle, Title } from 'components/styled/Text'
+import { BodyText, Subtitle, Title, SectionTitle } from 'components/styled/Text'
 
 import { styled } from 'lib/stitches'
 import * as Avatar from '@radix-ui/react-avatar'
 import { SiteLayout } from 'components/SiteLayout'
+import { Section } from 'components/styled/Section'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -99,10 +100,14 @@ const Home: NextPage = () => {
                             alt="Gustavo Vargas"
                             layout="fill"
                             quality={100}
+                            priority
                         />
                         <StyledFallback delayMs={600}>G</StyledFallback>
                     </ImageRoot>
                 </Hero>
+                <Section>
+                    <SectionTitle>Curriculum</SectionTitle>
+                </Section>
             </SiteLayout>
         </>
     )

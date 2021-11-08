@@ -14,10 +14,10 @@ export default class Document extends NextDocument {
                     <link
                         rel="preconnect"
                         href="https://fonts.gstatic.com"
-                        crossOrigin="anonymous"
+                        crossOrigin=""
                     />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
                         rel="stylesheet"
                     />
                     <style

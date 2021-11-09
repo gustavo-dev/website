@@ -35,11 +35,13 @@ const variants_border: Variants = {
 
 const ComponentWrapper = styled('div', {
     display: 'flex',
+
     alignItems: 'center',
     justifyContent: 'center',
 
     position: 'relative',
-    size: '100%',
+
+    fixedSize: '2.25rem',
 })
 
 const IteractionWrapper = styled('div', {
@@ -99,6 +101,7 @@ export const YTInteraction: React.FC<YTInteraction> = ({
 
     return (
         <ComponentWrapper
+            onTouchStart={handleMouseDown}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={onMouseLeave}

@@ -12,6 +12,7 @@ const globalStyle = globalCss({
 
     button: {
         border: 'none',
+        ' -webkit-tap-highlight-color': 'transparent',
     },
 })
 

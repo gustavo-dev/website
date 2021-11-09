@@ -26,6 +26,7 @@ const NavBar = styled('nav', {
     alignItems: 'center',
 
     width: '100%',
+    height: 36,
 
     mx: 'auto',
 
@@ -34,33 +35,28 @@ const NavBar = styled('nav', {
     },
 })
 
-const Hamburger = styled('div', {
+const Hamburger = styled('button', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
 
     position: 'relative',
 
-    size: 40,
+    fixedSize: '2.25rem',
     color: '$icons',
 
     cursor: 'pointer',
 
     ml: '-.8rem',
+    background: 'transparent',
 
     '@md': { display: 'none' },
 })
 
 const ThemeSwitcher = styled('button', {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
     cursor: 'pointer',
 
     boxSizing: 'border-box',
-
-    size: '2.25rem',
 
     mr: '-.2rem',
 

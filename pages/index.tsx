@@ -19,13 +19,13 @@ const ImageRoot = styled(Avatar.Root, {
     verticalAlign: 'middle',
     overflow: 'hidden',
     userSelect: 'none',
-    avatarSize: 80,
+    fixedSize: 80,
     borderRadius: '100%',
     backgroundColor: '#8888881F',
 
     mb: '2rem',
 
-    '@sm': { avatarSize: 121, mb: 0 },
+    '@sm': { fixedSize: 121, mb: 0 },
 })
 const StyledImage = styled(Image, {
     width: '100%',

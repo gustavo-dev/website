@@ -151,10 +151,10 @@ export const {
         br: (value: string | number) => ({
             borderRadius: value,
         }),
-        avatarSize: (value: string | number) => ({
+        fixedSize: (value: string | number) => ({
             minWidth: value,
-            minHeight: value,
             maxWidth: value,
+            minHeight: value,
             maxHeight: value,
         }),
     },

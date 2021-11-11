@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { IdProvider } from '@radix-ui/react-id'
-import { darkTheme, globalCss } from 'lib/stitches'
+import { darkTheme, globalCss, theme } from 'lib/stitches'
+import { ThemeProvider } from 'next-themes'
 
 const globalStyle = globalCss({
     '*': {
@@ -14,16 +15,34 @@ const globalStyle = globalCss({
         border: 'none',
         ' -webkit-tap-highlight-color': 'transparent',
     },
+
+    'ol, ul, li': {
+        listStyle: 'none',
+    },
+
+    a: {
+        textDecoration: 'inherit',
+    },
+
+    'a:visited': {
+        color: 'inherit',
+    },
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
     globalStyle()
     return (
-        <div className={darkTheme}>
-            <IdProvider>
+        <IdProvider>
+            <ThemeProvider
+                attribute="class"
+                value={{
+                    light: theme.toString(),
+                    dark: darkTheme.toString(),
+                }}
+            >
                 <Component {...pageProps} />
-            </IdProvider>
-        </div>
+            </ThemeProvider>
+        </IdProvider>
     )
 }
 export default MyApp

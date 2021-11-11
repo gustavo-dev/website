@@ -36,7 +36,8 @@ export const {
             bodyText: gray.gray11,
             linkText: gray.gray11,
             themeSwitcherBg: '#444',
-            icons: '#000',
+            icon: '#000000',
+            'touch-response': '#000000',
         },
         fontSizes: {
             1: '0.875rem',
@@ -138,6 +139,9 @@ export const {
         pb: (value: string | number) => ({
             paddingBottom: value,
         }),
+        pt: (value: string | number) => ({
+            paddingTop: value,
+        }),
         pr: (value: string | number) => ({
             paddingRight: value,
         }),
@@ -160,7 +164,7 @@ export const {
     },
 })
 
-export const darkTheme = createTheme({
+export const darkTheme = createTheme('dark', {
     colors: {
         bg: '#151515',
         primaryText: '#FFFFFF',
@@ -168,6 +172,19 @@ export const darkTheme = createTheme({
         bodyText: '#898989',
         linkText: '#898989',
         themeSwitcherBg: '#444',
-        icons: '#FFFFFF',
+        icon: '#FFFFFF',
+        'touch-response': '#FFFFFF',
+    },
+})
+
+export const Box = styled('div', {
+    variants: {
+        centered: {
+            true: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            },
+        },
     },
 })

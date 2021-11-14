@@ -8,7 +8,7 @@ interface YTInteraction {
 
 const variants_background: Variants = {
     background: {
-        opacity: 0.3,
+        opacity: 0.1,
         transition: {
             duration: 0.1,
         },
@@ -22,7 +22,7 @@ const variants_background: Variants = {
 }
 const variants_border: Variants = {
     border: {
-        opacity: 0.4,
+        opacity: 0.2,
         transition: {
             duration: 0.05,
         },
@@ -33,42 +33,34 @@ const variants_border: Variants = {
     },
 }
 
-const ComponentWrapper = styled('div', {
-    display: 'flex',
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    position: 'relative',
-
-    fixedSize: '2.25rem',
-})
-
-const IteractionWrapper = styled('div', {
+const InteractionWrapper = styled('div', {
+    pointerEvents: 'none',
     display: 'inline-block',
     position: 'absolute',
     inset: 0,
 
-    size: '100%',
+    m: -4,
 })
-const Iteraction = styled(motion.div, {
+
+const Interaction = styled(motion.div, {
     position: 'absolute',
     inset: 0,
 
-    size: '100%',
-
     boxSizing: 'border-box',
+
+    borderRadius: 4,
 
     variants: {
         circular: { true: { borderRadius: '$full' } },
         border: {
             true: {
-                border: '1px solid white',
+                border: '1px solid',
+                borderColor: '$touch-response',
             },
         },
         background: {
             true: {
-                backgroundColor: 'white',
+                backgroundColor: '$touch-response',
             },
         },
     },
@@ -100,29 +92,31 @@ export const YTInteraction: React.FC<YTInteraction> = ({
     }
 
     return (
-        <ComponentWrapper
+        <div
+            style={{ position: 'relative' }}
             onTouchStart={handleMouseDown}
+            onTouchEnd={handleMouseDown}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={onMouseLeave}
         >
             {children}
-            <IteractionWrapper>
-                <Iteraction
+            <InteractionWrapper data-interaction="extended">
+                <Interaction
                     border
                     circular={circular}
                     initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_border}
                 />
-                <Iteraction
+                <Interaction
                     background
                     circular={circular}
                     initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_background}
                 />
-            </IteractionWrapper>
-        </ComponentWrapper>
+            </InteractionWrapper>
+        </div>
     )
 }

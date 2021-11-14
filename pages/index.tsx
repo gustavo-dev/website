@@ -8,6 +8,7 @@ import { styled } from 'lib/stitches'
 import * as Avatar from '@radix-ui/react-avatar'
 import { SiteLayout } from 'components/SiteLayout'
 import { Section } from 'components/styled/Section'
+import { BlogPost } from 'components/BlogPost'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -68,6 +69,23 @@ const HeroText = styled('div', {
     textSizeAdjust: '100%',
 })
 
+const PostsContainer = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.25rem',
+
+    px: '1rem',
+    py: '.85rem',
+
+    background: '$bg-1',
+
+    '@md': {
+        display: 'grid',
+
+        gridTemplateColumns: '1fr 1fr',
+    },
+})
+
 const Home: NextPage = () => {
     return (
         <>
@@ -80,7 +98,7 @@ const Home: NextPage = () => {
                         <Title
                             css={{
                                 mb: '.5rem',
-                                ml: '-.15rem',
+                                ml: '-.08rem',
                                 '@md': { mb: '.7rem' },
                             }}
                         >
@@ -105,6 +123,25 @@ const Home: NextPage = () => {
                         <StyledFallback delayMs={600}>G</StyledFallback>
                     </ImageRoot>
                 </Hero>
+                <Section>
+                    <SectionTitle css={{ mb: '2rem' }}>
+                        Trending Posts
+                    </SectionTitle>
+                    <PostsContainer>
+                        <BlogPost
+                            title="What is a JavaScript Framework?"
+                            views={122}
+                        />
+                        <BlogPost
+                            title="Which backend should I use?"
+                            views={12895}
+                        />
+                        <BlogPost
+                            title="What is the difference between Angular and React?"
+                            views={122}
+                        />
+                    </PostsContainer>
+                </Section>
                 <Section>
                     <SectionTitle>Curriculum</SectionTitle>
                 </Section>

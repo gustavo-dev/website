@@ -37,7 +37,22 @@ export const {
             linkText: gray.gray11,
             themeSwitcherBg: '#444',
             icon: '#000000',
+            'primary-text': '#000000',
+            'secondary-text': '#333333',
+            'description-text': '#444444',
+            'body-text': '#595959',
             'touch-response': '#000000',
+            'component-background': '#E0E0E0',
+            'bg-0': '#00000000',
+            'bg-1': '#0000000D',
+            'bg-2': '#00000012',
+            'bg-3': '#00000014',
+            'bg-4': '#00000017',
+            'bg-6': '#0000001C',
+            'bg-8': '#0000001F',
+            'bg-12': '#00000024',
+            'bg-16': '#00000026',
+            'bg-24': '#00000029',
         },
         fontSizes: {
             1: '0.875rem',
@@ -164,7 +179,7 @@ export const {
     },
 })
 
-export const darkTheme = createTheme('dark', {
+export const darkTheme = createTheme({
     colors: {
         bg: '#151515',
         primaryText: '#FFFFFF',
@@ -173,7 +188,22 @@ export const darkTheme = createTheme('dark', {
         linkText: '#898989',
         themeSwitcherBg: '#444',
         icon: '#FFFFFF',
+        'primary-text': '#FFFFFF',
+        'secondary-text': '#FAFAFA',
+        'description-text': '#EAEAEA',
+        'body-text': '#898989',
         'touch-response': '#FFFFFF',
+        'component-background': '#202020',
+        'bg-0': '#FFFFFF00',
+        'bg-1': '#FFFFFF0D',
+        'bg-2': '#FFFFFF12',
+        'bg-3': '#FFFFFF14',
+        'bg-4': '#FFFFFF17',
+        'bg-6': '#FFFFFF1C',
+        'bg-8': '#FFFFFF1F',
+        'bg-12': '#FFFFFF24',
+        'bg-16': '#FFFFFF26',
+        'bg-24': '#FFFFFF29',
     },
 })
 

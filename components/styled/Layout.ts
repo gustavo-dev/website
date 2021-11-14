@@ -1,7 +1,7 @@
 import { styled } from 'lib/stitches'
 
 export const Layout = styled('main', {
-    maxWidth: '42rem',
+    maxWidth: '52rem',
 
     mx: 'auto',
 })

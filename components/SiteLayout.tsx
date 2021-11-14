@@ -38,7 +38,7 @@ export const SiteLayout: React.FC = ({ children }) => {
     return (
         <AppWrapper>
             <WorkInProgressWarning>Work in progress</WorkInProgressWarning>
-            <Container>
+            <Container id="layout">
                 <Layout>
                     <Header />
                     <div>{children}</div>

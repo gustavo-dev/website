@@ -1,9 +1,13 @@
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import * as Toggle from '@radix-ui/react-toggle'
 import { NavLink } from 'components/NavLink'
-import { styled } from 'lib/stitches'
+import { Box, styled } from 'lib/stitches'
 
 import { SunIcon } from '@radix-ui/react-icons'
 import { YTInteraction } from 'components/YTInteraction'
+import { useEffect, useState } from 'react'
+import { MobileDrawer } from 'components/MobileDrawer'
+import { useTheme } from 'next-themes'
 
 const Container = styled('header', {
     display: 'flex',
@@ -23,19 +27,18 @@ const Container = styled('header', {
 const NavBar = styled('nav', {
     display: 'flex',
 
+    justifyContent: 'space-between',
     alignItems: 'center',
+
+    position: 'relative',
 
     width: '100%',
     height: 36,
 
     mx: 'auto',
-
-    '@md': {
-        ml: '-.75rem',
-    },
 })
 
-const Hamburger = styled('button', {
+const Hamburger = styled(Toggle.Root, {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -43,44 +46,87 @@ const Hamburger = styled('button', {
     position: 'relative',
 
     fixedSize: '2.25rem',
-    color: '$icons',
+    color: '$icon',
 
     cursor: 'pointer',
 
-    ml: '-.8rem',
     background: 'transparent',
 
     '@md': { display: 'none' },
 })
 
-const ThemeSwitcher = styled('button', {
+const ThemeSwitcher = styled(Toggle.Root, {
     cursor: 'pointer',
+
+    mr: '-.5rem',
 
     boxSizing: 'border-box',
 
-    mr: '-.2rem',
+    color: '$icon',
 
-    color: 'White',
     background: 'transparent',
+
+    fixedSize: '2.25rem',
 })
 
 export const Header: React.FC = () => {
+    const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false)
+
+    const { setTheme, resolvedTheme } = useTheme()
+
+    const onDrawerCloseComplete = () => {
+        if (document && mobileDrawerOpen)
+            document.getElementById('layout')?.removeAttribute('style')
+    }
+
+    useEffect(() => {
+        if (document)
+            if (mobileDrawerOpen)
+                document
+                    .getElementById('layout')
+                    ?.setAttribute('style', `overflow: hidden`)
+    }, [mobileDrawerOpen])
+
     return (
         <Container>
             <NavBar>
-                <Hamburger>
+                <Box
+                    css={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        ml: '-.75rem',
+                    }}
+                >
+                    <Hamburger
+                        aria-label="Toggle Drawer"
+                        onClick={() => setMobileDrawerOpen(!mobileDrawerOpen)}
+                    >
+                        <YTInteraction circular>
+                            <Box centered css={{ fixedSize: '2.25rem' }}>
+                                <HamburgerMenuIcon />
+                            </Box>
+                        </YTInteraction>
+                    </Hamburger>
+                    <NavLink href="/" text="Home" />
+                    <NavLink href="/blog" text="Blog" />
+                </Box>
+                <ThemeSwitcher
+                    aria-label="Toggle Dark Mode"
+                    onClick={() =>
+                        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                    }
+                >
                     <YTInteraction circular>
-                        <HamburgerMenuIcon />
+                        <Box centered css={{ fixedSize: '2.25rem' }}>
+                            <SunIcon />
+                        </Box>
                     </YTInteraction>
-                </Hamburger>
-                <NavLink href="/" text="Home" />
-                <NavLink href="/blog" text="Blog" />
+                </ThemeSwitcher>
+                <MobileDrawer
+                    open={mobileDrawerOpen}
+                    onDrawerCloseComplete={onDrawerCloseComplete}
+                />
             </NavBar>
-            <ThemeSwitcher aria-label="Toggle Dark Mode" type="button">
-                <YTInteraction circular>
-                    <SunIcon />
-                </YTInteraction>
-            </ThemeSwitcher>
         </Container>
     )
 }

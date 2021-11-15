@@ -1,16 +1,17 @@
-import { YTInteraction } from 'components/YTInteraction'
 import React from 'react'
-import { motion } from 'framer-motion'
+import { YTInteraction } from 'components/YTInteraction'
 import { styled } from 'lib/stitches'
 import { ComponentDescription, ComponentTitle } from 'components/styled/Text'
 import { EyeOpenIcon } from '@radix-ui/react-icons'
+import Link from 'next/link'
 
 interface BlogPostProps {
     title: string
     views: number
+    slug?: string
 }
 
-const BlogPostContainer = styled(motion.div, {
+const BlogPostContainer = styled('div', {
     cursor: 'pointer',
 
     width: '100%',
@@ -34,15 +35,21 @@ const IconSpan = styled('span', {
 export const BlogPost: React.FC<BlogPostProps> = ({ title, views }) => {
     return (
         <YTInteraction aria-label={title}>
-            <BlogPostContainer>
-                <ComponentTitle css={{ mb: '1rem' }}>{title}</ComponentTitle>
-                <ComponentDescription>
-                    <IconSpan>
-                        <EyeOpenIcon />
-                    </IconSpan>
-                    {views}
-                </ComponentDescription>
-            </BlogPostContainer>
+            <Link href="/blog">
+                <a>
+                    <BlogPostContainer>
+                        <ComponentTitle css={{ mb: '1rem' }}>
+                            {title}
+                        </ComponentTitle>
+                        <ComponentDescription>
+                            <IconSpan>
+                                <EyeOpenIcon />
+                            </IconSpan>
+                            {views}
+                        </ComponentDescription>
+                    </BlogPostContainer>
+                </a>
+            </Link>
         </YTInteraction>
     )
 }

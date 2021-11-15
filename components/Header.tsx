@@ -109,6 +109,7 @@ export const Header: React.FC = () => {
                     </Hamburger>
                     <NavLink href="/" text="Home" />
                     <NavLink href="/blog" text="Blog" />
+                    {/* <NavLink href="/pathfinding" text="Pathfinding" /> */}
                 </Box>
                 <ThemeSwitcher
                     aria-label="Toggle Dark Mode"

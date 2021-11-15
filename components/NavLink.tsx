@@ -7,7 +7,7 @@ interface NavLinkProps {
     href: string
 }
 
-const StyledLink = styled('a', {
+const StyledLink = styled('div', {
     display: 'none',
 
     fontSize: '$2',
@@ -15,7 +15,7 @@ const StyledLink = styled('a', {
 
     textDecoration: 'none',
 
-    color: '$linkText',
+    color: '$link-text',
 
     borderRadius: '.5rem',
 
@@ -23,8 +23,10 @@ const StyledLink = styled('a', {
 
     transition: 'background 200ms ease-in',
 
+    cursor: 'pointer',
+
     '&:hover': {
-        background: '$gray4',
+        background: '$bg-2',
     },
 
     '@md': { display: 'block' },
@@ -32,7 +34,7 @@ const StyledLink = styled('a', {
     variants: {
         isActive: {
             true: {
-                color: '$secondaryText',
+                color: '$link-text--active',
                 fontWeight: 600,
             },
         },
@@ -44,8 +46,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, text }) => {
     const isActive = router.asPath === href
 
     return (
-        <Link passHref href={href}>
-            <StyledLink isActive={isActive}>{text}</StyledLink>
-        </Link>
+        <StyledLink isActive={isActive} aria-label={text}>
+            <Link href={href}>{text}</Link>
+        </StyledLink>
     )
 }

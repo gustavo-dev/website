@@ -28,6 +28,15 @@ const globalStyle = globalCss({
     'a:visited': {
         color: 'inherit',
     },
+
+    '::-webkit-scrollbar': {
+        width: 8,
+    },
+
+    '::-webkit-scrollbar-thumb': {
+        background: '$bg-16',
+        borderRadius: 10,
+    },
 })
 
 function MyApp({ Component, pageProps }: AppProps) {

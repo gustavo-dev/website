@@ -41,8 +41,11 @@ export const {
             'secondary-text': '#333333',
             'description-text': '#444444',
             'body-text': '#595959',
+            'link-text': '#444444',
+            'link-text--active': '#222222',
             'touch-response': '#000000',
             'component-background': '#E0E0E0',
+            tooltip: '#F0F0F0',
             'bg-0': '#00000000',
             'bg-1': '#0000000D',
             'bg-2': '#00000012',
@@ -160,6 +163,9 @@ export const {
         pr: (value: string | number) => ({
             paddingRight: value,
         }),
+        pl: (value: string | number) => ({
+            paddingLeft: value,
+        }),
         // A property for applying width/height together
         size: (value: string | number) => ({
             width: value,
@@ -192,8 +198,11 @@ export const darkTheme = createTheme({
         'secondary-text': '#FAFAFA',
         'description-text': '#EAEAEA',
         'body-text': '#898989',
+        'link-text': '#888888',
+        'link-text--active': '#EAEAEA',
         'touch-response': '#FFFFFF',
         'component-background': '#202020',
+        tooltip: '#444444',
         'bg-0': '#FFFFFF00',
         'bg-1': '#FFFFFF0D',
         'bg-2': '#FFFFFF12',

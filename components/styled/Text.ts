@@ -28,6 +28,8 @@ export const SectionTitle = styled('h3', {
     color: '$primary-text',
     fontSize: '$5',
 
+    mb: '2rem',
+
     '@md': { fontSize: '$7' },
 })
 

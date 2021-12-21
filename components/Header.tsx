@@ -74,17 +74,15 @@ export const Header: React.FC = () => {
 
     const { setTheme, resolvedTheme } = useTheme()
 
-    const onDrawerCloseComplete = () => {
-        if (document && mobileDrawerOpen)
-            document.getElementById('layout')?.removeAttribute('style')
-    }
-
     useEffect(() => {
         if (document)
-            if (mobileDrawerOpen)
+            if (mobileDrawerOpen) {
                 document
                     .getElementById('layout')
                     ?.setAttribute('style', `overflow: hidden`)
+            } else {
+                document.getElementById('layout')?.removeAttribute('style')
+            }
     }, [mobileDrawerOpen])
 
     return (
@@ -109,7 +107,7 @@ export const Header: React.FC = () => {
                     </Hamburger>
                     <NavLink href="/" text="Home" />
                     <NavLink href="/blog" text="Blog" />
-                    {/* <NavLink href="/pathfinding" text="Pathfinding" /> */}
+                    <NavLink href="/pathfinding" text="Pathfinding" />
                 </Box>
                 <ThemeSwitcher
                     aria-label="Toggle Dark Mode"
@@ -123,10 +121,7 @@ export const Header: React.FC = () => {
                         </Box>
                     </YTInteraction>
                 </ThemeSwitcher>
-                <MobileDrawer
-                    open={mobileDrawerOpen}
-                    onDrawerCloseComplete={onDrawerCloseComplete}
-                />
+                <MobileDrawer open={mobileDrawerOpen} />
             </NavBar>
         </Container>
     )

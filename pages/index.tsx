@@ -1,28 +1,33 @@
 import React from 'react'
 import Image from 'next/image'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+
+import { Axios } from 'axios'
+
 import {
     BodyText,
     Subtitle,
     Title,
     SectionTitle,
     ComponentTitle,
+    ComponentDescription,
+    Link,
 } from 'components/styled/Text'
 
 import { CheckCircledIcon, InfoCircledIcon } from '@radix-ui/react-icons'
 
-import { styled } from 'lib/stitches'
+import { Box, styled } from 'lib/stitches'
 
 import * as Avatar from '@radix-ui/react-avatar'
 
 import { SiteLayout } from 'components/SiteLayout'
 import { Section } from 'components/styled/Section'
-import { BlogPost } from 'components/BlogPost'
 
 import CURRICULUM_DATA from 'data/curriculum.json'
 import { Tooltip } from 'components/Tooltip'
 import { Grid, GridItem } from 'components/styled/Grid'
+import { Chip } from 'components/Chip'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -42,6 +47,7 @@ const ImageRoot = styled(Avatar.Root, {
 
     '@sm': { fixedSize: 121, mb: 0 },
 })
+
 const StyledImage = styled(Image, {
     width: '100%',
     height: '100%',
@@ -90,6 +96,13 @@ const PostsContainer = styled('div', {
     background: '$bg-1',
 })
 
+const ProjectCard = styled('div', {
+    display: 'inline-block',
+
+    background: '$bg-1',
+    p: '2rem',
+})
+
 const CurriculumComponent = styled('div', {
     height: 250,
 
@@ -130,7 +143,30 @@ const CheckListComponent = styled('div', {
     gap: 15,
 })
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+    const api = new Axios({
+        baseURL: 'https://api.github.com/repos/gustavo-dev',
+        headers: {
+            'content-type': 'application/json; charset=utf-8',
+        },
+    })
+
+    const hopes = await api.get<GithubRepo>('/hopes')
+    const csgoempire = await api.get<GithubRepo>('/csgoempire-api')
+
+    return {
+        props: {
+            // Axios is returning the data as a string for some reason
+            // so we need to convert to a JSON object util we find a fix
+            // for it
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            projects: [JSON.parse(hopes.data), JSON.parse(csgoempire.data)],
+        },
+    }
+}
+
+const Home: NextPage<HomeProps> = ({ projects }) => {
     return (
         <>
             <Head>
@@ -139,16 +175,8 @@ const Home: NextPage = () => {
             <SiteLayout>
                 <Hero>
                     <HeroText>
-                        <Title
-                            css={{
-                                mb: '.5rem',
-                                ml: '-.08rem',
-                                '@md': { mb: '.7rem' },
-                            }}
-                        >
-                            Gustavo Vargas
-                        </Title>
-                        <Subtitle css={{ mb: '1rem' }}>
+                        <Title>Gustavo Vargas</Title>
+                        <Subtitle>
                             High school student, 17 y.o in love with programming
                         </Subtitle>
                         <BodyText>
@@ -168,29 +196,33 @@ const Home: NextPage = () => {
                     </ImageRoot>
                 </Hero>
                 <Section>
-                    <SectionTitle>Trending Posts</SectionTitle>
-                    <PostsContainer>
-                        <Grid>
-                            <GridItem md={6}>
-                                <BlogPost
-                                    title="What is a JavaScript Framework?"
-                                    views={122}
-                                />
-                            </GridItem>
-                            <GridItem md={6}>
-                                <BlogPost
-                                    title="Which backend should I use?"
-                                    views={12895}
-                                />
-                            </GridItem>
-                            <GridItem md={6}>
-                                <BlogPost
-                                    title="What is the difference between Angular and React?"
-                                    views={122}
-                                />
-                            </GridItem>
-                        </Grid>
-                    </PostsContainer>
+                    <SectionTitle>Projects</SectionTitle>
+
+                    {projects.map((project, i) => (
+                        <ProjectCard key={i} css={{ mt: i > 0 ? '1rem' : 0 }}>
+                            <Box css={{ display: 'inline-block' }}>
+                                <Link href={project.html_url}>
+                                    <ComponentTitle>
+                                        {project.full_name}
+                                    </ComponentTitle>
+                                </Link>
+                            </Box>
+                            <ComponentDescription>
+                                {project.description}
+                            </ComponentDescription>
+                            <Box
+                                css={{
+                                    mt: '1.2rem',
+                                    display: 'inline-flex',
+                                    gap: 5,
+                                }}
+                            >
+                                {project.topics.map((topic, i) => {
+                                    return <Chip key={i} value={topic} />
+                                })}
+                            </Box>
+                        </ProjectCard>
+                    ))}
                 </Section>
                 <Section>
                     <SectionTitle>Curriculum</SectionTitle>
@@ -216,7 +248,7 @@ const Home: NextPage = () => {
                                                             >
                                                                 {status ===
                                                                     'complete' && (
-                                                                    <CheckCircledIcon color="green" />
+                                                                    <CheckCircledIcon color="#00ff08" />
                                                                 )}
                                                                 {status ===
                                                                     'due' && (

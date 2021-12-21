@@ -1,13 +1,5 @@
 import { createStitches } from '@stitches/react'
-import {
-    gray,
-    grayDark,
-    violetDark,
-    mauveDark,
-    mintDark,
-    pinkDark,
-    amberDark,
-} from '@radix-ui/colors'
+import { gray, mintDark, amberDark } from '@radix-ui/colors'
 
 export const {
     styled,
@@ -23,11 +15,6 @@ export const {
 } = createStitches({
     theme: {
         colors: {
-            ...grayDark,
-            ...violetDark,
-            ...mauveDark,
-            ...mintDark,
-            ...pinkDark,
             ...amberDark,
             pathWall: mintDark.mint10,
             bg: gray.gray1,
@@ -37,6 +24,8 @@ export const {
             linkText: gray.gray11,
             themeSwitcherBg: '#444',
             icon: '#000000',
+            'primary-color': '#116401',
+            'primary-color-subtle': '#11640120',
             'primary-text': '#000000',
             'secondary-text': '#333333',
             'description-text': '#444444',
@@ -194,6 +183,8 @@ export const darkTheme = createTheme({
         linkText: '#898989',
         themeSwitcherBg: '#444',
         icon: '#FFFFFF',
+        'primary-color': '#00ff08',
+        'primary-color-subtle': '#00ff0815',
         'primary-text': '#FFFFFF',
         'secondary-text': '#FAFAFA',
         'description-text': '#EAEAEA',

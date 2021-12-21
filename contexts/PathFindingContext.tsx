@@ -26,8 +26,8 @@ interface PathFindingContext {
     addObserver: AddObserver
 }
 
-// const tableDim = { x: 30, y: 75 }
-const tableDim = { x: 5, y: 5 }
+const tableDim = { x: 20, y: 30 }
+// const tableDim = { x: 5, y: 5 }
 
 const createRow = (length: number): Array<number> => {
     return new Array(length).fill(0)

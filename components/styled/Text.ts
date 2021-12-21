@@ -9,10 +9,10 @@ export const Title = styled('h1', {
 
     letterSpacing: '-.025em',
 
-    '@md': {
-        fontSize: '$8',
-        lineHeight: 1,
-    },
+    mb: '.5rem',
+    ml: '-.08rem',
+
+    '@md': { mb: '.7rem', fontSize: '$8', lineHeight: 1 },
 })
 
 export const Subtitle = styled('h2', {
@@ -22,6 +22,8 @@ export const Subtitle = styled('h2', {
     fontWeight: 400,
 
     lineHeight: '$3',
+
+    mb: '1rem',
 })
 
 export const SectionTitle = styled('h3', {
@@ -36,11 +38,13 @@ export const SectionTitle = styled('h3', {
 export const ComponentTitle = styled('h3', {
     color: '$secondary-text',
 
-    fontSize: '$3',
+    fontSize: '1.25rem',
     lineHeight: '$4',
 
     fontWeight: 500,
     letterSpacing: '-.025em',
+
+    mb: '1rem',
 })
 
 export const ComponentDescription = styled('p', {
@@ -56,4 +60,16 @@ export const BodyText = styled('p', {
     fontWeight: 400,
 
     lineHeight: '$3',
+})
+
+export const Link = styled('a', {
+    transition: 'all 500ms',
+    position: 'relative',
+
+    '& :hover': { textDecoration: 'underline' },
+})
+
+export const Caption = styled('p', {
+    fontSize: '.75rem',
+    lineHeight: '1.375rem',
 })

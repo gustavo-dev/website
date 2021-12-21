@@ -4,10 +4,12 @@ import Link from 'next/link'
 
 interface MobileDrawerProps {
     open: boolean
-    onDrawerCloseComplete: () => void
 }
 
-const DRAWER_LINKS = [{ text: 'Home', href: '/' }]
+const DRAWER_LINKS = [
+    { text: 'Home', href: '/' },
+    { text: 'Blog', href: '/blog' },
+]
 
 const MobileDrawerContainer = styled(motion.ul, {
     position: 'absolute',
@@ -17,7 +19,7 @@ const MobileDrawerContainer = styled(motion.ul, {
 
     top: 58,
 
-    background: '#151515',
+    background: '$bg',
 
     zIndex: 1000,
 
@@ -28,10 +30,33 @@ const MobileDrawerContainer = styled(motion.ul, {
     color: '#FAFAFA',
 })
 
-export const MobileDrawer: React.FC<MobileDrawerProps> = ({
-    open,
-    onDrawerCloseComplete,
-}) => {
+const DrawerLink = styled(motion.li, {
+    marginBottom: '.5rem',
+    position: 'relative',
+
+    py: '1rem',
+
+    width: '100%',
+
+    cursor: 'pointer',
+
+    color: '$primary-text',
+
+    '&::after': {
+        content: '',
+        position: 'absolute',
+        width: '100%',
+
+        bottom: 0,
+        left: 0,
+
+        borderBottom: '1px solid gray',
+
+        boxSizing: 'border-box',
+    },
+})
+
+export const MobileDrawer: React.FC<MobileDrawerProps> = ({ open }) => {
     return (
         <AnimatePresence>
             {open && (
@@ -41,12 +66,20 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    onAnimationComplete={onDrawerCloseComplete}
                 >
                     {DRAWER_LINKS.map((link, i) => (
-                        <motion.li key={i}>
-                            <Link href={link.href}>{link.text}</Link>
-                        </motion.li>
+                        <Link passHref key={i} href={link.href}>
+                            <DrawerLink
+                                initial={{
+                                    translateX: '-50%',
+                                    opacity: 0.2,
+                                }}
+                                animate={{ translateX: 0, opacity: 1 }}
+                                transition={{ delay: 0.08 * i }}
+                            >
+                                {link.text}
+                            </DrawerLink>
+                        </Link>
                     ))}
                 </MobileDrawerContainer>
             )}

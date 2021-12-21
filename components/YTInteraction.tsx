@@ -43,6 +43,8 @@ const InteractionWrapper = styled('div', {
 })
 
 const Interaction = styled(motion.div, {
+    opacity: 0,
+
     position: 'absolute',
     inset: 0,
 
@@ -105,14 +107,12 @@ export const YTInteraction: React.FC<YTInteraction> = ({
                 <Interaction
                     border
                     circular={circular}
-                    initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_border}
                 />
                 <Interaction
                     background
                     circular={circular}
-                    initial={{ opacity: 0 }}
                     animate={controls}
                     variants={variants_background}
                 />

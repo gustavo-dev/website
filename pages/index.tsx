@@ -89,13 +89,6 @@ const HeroText = styled('div', {
     textSizeAdjust: '100%',
 })
 
-const PostsContainer = styled('div', {
-    px: '1rem',
-    py: '.85rem',
-
-    background: '$bg-1',
-})
-
 const ProjectCard = styled('div', {
     display: 'inline-block',
 

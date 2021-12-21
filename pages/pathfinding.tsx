@@ -1,11 +1,10 @@
 import React from 'react'
 import { Table } from 'components/pathfinding/Table'
 import { PathFindingContextProvider } from 'contexts/PathFindingContext'
-import { Box, styled } from 'lib/stitches'
+import { styled } from 'lib/stitches'
 
 import { SiteLayout } from 'components/SiteLayout'
 import { Title } from 'components/styled/Text'
-import Button from 'components/Button'
 import { YTInteraction } from 'components/YTInteraction'
 
 const TableWrapper = styled('div', {

@@ -23,6 +23,7 @@ const globalStyle = globalCss({
 
     a: {
         textDecoration: 'inherit',
+        color: 'inherit',
     },
 
     'a:visited': {

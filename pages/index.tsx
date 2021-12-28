@@ -171,7 +171,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 const Home: NextPage<HomeProps> = ({ projects }) => {
     const { theme } = useTheme()
 
-    const iconsColor = theme === 'dark' ? '#FFF' : '#000'
+    const iconsColor = theme ? (theme === 'dark' ? '#FFF' : '#000') : '#FFF'
 
     return (
         <>

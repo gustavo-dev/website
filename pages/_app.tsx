@@ -46,6 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <IdProvider>
             <ThemeProvider
                 attribute="class"
+                defaultTheme="dark"
                 value={{
                     light: theme.toString(),
                     dark: darkTheme.toString(),

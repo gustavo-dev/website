@@ -4,6 +4,7 @@ import { styled } from 'lib/stitches'
 
 interface TooltipProps {
     trigger: JSX.Element
+    delay?: number
 }
 
 const StyledArrow = styled(TooltipPrimitive.Arrow, {
@@ -22,9 +23,13 @@ const StyledContent = styled(TooltipPrimitive.Content, {
     boxShadow: '0 1px 2px rgba(0, 0, 0, .4)',
 })
 
-export const Tooltip: React.FC<TooltipProps> = ({ trigger, children }) => {
+export const Tooltip: React.FC<TooltipProps> = ({
+    trigger,
+    delay = 350,
+    children,
+}) => {
     return (
-        <TooltipPrimitive.Root delayDuration={350}>
+        <TooltipPrimitive.Root delayDuration={delay}>
             <TooltipPrimitive.Trigger asChild>
                 {trigger}
             </TooltipPrimitive.Trigger>

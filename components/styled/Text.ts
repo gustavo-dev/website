@@ -48,9 +48,9 @@ export const ComponentTitle = styled('h3', {
 })
 
 export const ComponentDescription = styled('p', {
-    display: 'flex',
-
     color: '$description-text',
+
+    lineHeight: '1.4rem',
 })
 
 export const BodyText = styled('p', {
@@ -73,3 +73,5 @@ export const Caption = styled('p', {
     fontSize: '.75rem',
     lineHeight: '1.375rem',
 })
+
+export const Span = styled('span', {})

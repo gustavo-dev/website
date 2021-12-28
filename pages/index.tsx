@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import NextLink from 'next/link'
 
 import { Axios } from 'axios'
 
@@ -15,7 +16,14 @@ import {
     Link,
 } from 'components/styled/Text'
 
-import { CheckCircledIcon, InfoCircledIcon } from '@radix-ui/react-icons'
+import { FiGithub } from 'react-icons/fi'
+import { FaDiscord } from 'react-icons/fa'
+
+import {
+    CheckCircledIcon,
+    InfoCircledIcon,
+    Link2Icon,
+} from '@radix-ui/react-icons'
 
 import { Box, styled } from 'lib/stitches'
 
@@ -28,6 +36,8 @@ import CURRICULUM_DATA from 'data/curriculum.json'
 import { Tooltip } from 'components/Tooltip'
 import { Grid, GridItem } from 'components/styled/Grid'
 import { Chip } from 'components/Chip'
+import { BlueLink } from 'components/BlueLink'
+import { useTheme } from 'next-themes'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -154,12 +164,16 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
             // for it
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            projects: [JSON.parse(hopes.data), JSON.parse(csgoempire.data)],
+            projects: [JSON.parse(csgoempire.data), JSON.parse(hopes.data)],
         },
     }
 }
 
 const Home: NextPage<HomeProps> = ({ projects }) => {
+    const { theme } = useTheme()
+
+    const iconsColor = theme === 'dark' ? '#FFF' : '#000'
+
     return (
         <>
             <Head>
@@ -169,12 +183,10 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                 <Hero>
                     <HeroText>
                         <Title>Gustavo Vargas</Title>
-                        <Subtitle>
-                            High school student, 17 y.o in love with programming
-                        </Subtitle>
+                        <Subtitle>18 y.o, Full Stack developer</Subtitle>
                         <BodyText>
-                            Studying programming before going to college. In
-                            love with web development :)
+                            Studying programming before going to college.
+                            Welcome to my portifolio
                         </BodyText>
                     </HeroText>
                     <ImageRoot>
@@ -188,6 +200,36 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                         <StyledFallback delayMs={1000}>G</StyledFallback>
                     </ImageRoot>
                 </Hero>
+                <Box
+                    css={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 15,
+                        mt: '1.5rem',
+                    }}
+                >
+                    <Link
+                        href="https://www.github.com/gustavo-dev"
+                        target="_blank"
+                    >
+                        <FiGithub color={iconsColor} size={20} />
+                    </Link>
+                    <Tooltip
+                        delay={100}
+                        trigger={
+                            <Box
+                                css={{ cursor: 'pointer' }}
+                                onClick={() =>
+                                    navigator.clipboard.writeText('tavin#5205')
+                                }
+                            >
+                                <FaDiscord color={iconsColor} size={20} />
+                            </Box>
+                        }
+                    >
+                        Copy to clipboard
+                    </Tooltip>
+                </Box>
                 <Section>
                     <SectionTitle>Projects</SectionTitle>
 
@@ -195,7 +237,16 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                         <ProjectCard key={i} css={{ mt: i > 0 ? '1rem' : 0 }}>
                             <Box css={{ display: 'inline-block' }}>
                                 <Link href={project.html_url}>
-                                    <ComponentTitle>
+                                    <ComponentTitle
+                                        css={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 5,
+                                        }}
+                                    >
+                                        <Box css={{ mb: '-.25rem' }}>
+                                            <Link2Icon />
+                                        </Box>
                                         {project.full_name}
                                     </ComponentTitle>
                                 </Link>
@@ -216,6 +267,23 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                             </Box>
                         </ProjectCard>
                     ))}
+
+                    <ProjectCard css={{ mt: '1rem' }}>
+                        <ComponentTitle>Others</ComponentTitle>
+                        <ComponentDescription>
+                            I have created a few JavaScript BOTs for&nbsp;
+                            <BlueLink href="https://www.csgoempire.com/">
+                                CSGOEmpire
+                            </BlueLink>
+                            &nbsp;and&nbsp;
+                            <BlueLink href="https://www.binance.com/">
+                                Binance
+                            </BlueLink>
+                            &nbsp;for a few clients as well. Feel free to
+                            contact me via Discord if you have any questions
+                            about these projects.
+                        </ComponentDescription>
+                    </ProjectCard>
                 </Section>
                 <Section>
                     <SectionTitle>Curriculum</SectionTitle>

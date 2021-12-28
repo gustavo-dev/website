@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import NextLink from 'next/link'
 
 import { Axios } from 'axios'
 

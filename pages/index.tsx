@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import type { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 
 import { Axios } from 'axios'
 
@@ -35,8 +34,8 @@ import CURRICULUM_DATA from 'data/curriculum.json'
 import { Tooltip } from 'components/Tooltip'
 import { Grid, GridItem } from 'components/styled/Grid'
 import { Chip } from 'components/Chip'
-import { BlueLink } from 'components/BlueLink'
 import { useTheme } from 'next-themes'
+import { NextSeo } from 'next-seo'
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -175,17 +174,18 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
 
     return (
         <>
-            <Head>
-                <title>Gustavo Vargas</title>
-            </Head>
             <SiteLayout>
+                <NextSeo
+                    title="Gustavo Vargas"
+                    description="Hi! My name is Gustavo. I am 18 years old and this is my portifolio"
+                />
                 <Hero>
                     <HeroText>
                         <Title>Gustavo Vargas</Title>
-                        <Subtitle>18 y.o, Full Stack developer</Subtitle>
+                        <Subtitle>JavaScript Developer / Student</Subtitle>
                         <BodyText>
-                            Studying programming before going to college.
-                            Welcome to my portifolio
+                            2 year experience with web development. Welcome to
+                            my portifolio
                         </BodyText>
                     </HeroText>
                     <ImageRoot>
@@ -255,9 +255,10 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                             </ComponentDescription>
                             <Box
                                 css={{
-                                    mt: '1.2rem',
-                                    display: 'inline-flex',
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
                                     gap: 5,
+                                    mt: '1.2rem',
                                 }}
                             >
                                 {project.topics.map((topic, i) => {
@@ -270,22 +271,33 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                     <ProjectCard css={{ mt: '1rem' }}>
                         <ComponentTitle>Others</ComponentTitle>
                         <ComponentDescription>
-                            I have created a few JavaScript BOTs for&nbsp;
-                            <BlueLink href="https://www.csgoempire.com/">
-                                CSGOEmpire
-                            </BlueLink>
-                            &nbsp;and&nbsp;
-                            <BlueLink href="https://www.binance.com/">
-                                Binance
-                            </BlueLink>
-                            &nbsp;for a few clients as well. Feel free to
-                            contact me via Discord if you have any questions
-                            about these projects.
+                            I have created a few JavaScript BOTs for
+                            <a href="https://www.csgoempire.com/">CSGOEmpire</a>
+                            and
+                            <a href="https://www.binance.com/">Binance</a>
+                            for a few clients as well. Feel free to contact me
+                            via Discord if you have any questions about these
+                            projects.
                         </ComponentDescription>
                     </ProjectCard>
                 </Section>
                 <Section>
-                    <SectionTitle>Curriculum</SectionTitle>
+                    <SectionTitle css={{ mb: '1rem' }}>Resume</SectionTitle>
+                    <BodyText css={{ mb: '.5rem' }}>
+                        I had my first contact with programming at 14 years old
+                        but I became serious about it only when I was almost 16
+                        (end on 2019).
+                    </BodyText>
+                    <BodyText css={{ mb: '.5rem' }}>
+                        Then I started learning logic with Java and Python and
+                        soon moved to Web Development with JavaScript. I am also
+                        familiar with C++ and C# because I was interested about
+                        Game Development for a while (using Unity and Unreal).
+                    </BodyText>
+                    <BodyText css={{ mb: '2rem' }}>
+                        During the pandemic, I sold a few CSGOEmpire bots and
+                        one Binance bot and made a quite good ammount of money.
+                    </BodyText>
                     <Grid>
                         {CURRICULUM_DATA.blocks.map(
                             ({ title, checklist }, i) => {

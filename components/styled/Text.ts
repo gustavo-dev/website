@@ -51,6 +51,8 @@ export const ComponentDescription = styled('p', {
     color: '$description-text',
 
     lineHeight: '1.4rem',
+
+    '& a': { color: '#09F' },
 })
 
 export const BodyText = styled('p', {

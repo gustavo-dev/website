@@ -7,4 +7,8 @@ export const Section = styled('section', {
     position: 'relative',
 
     mt: '4rem',
+
+    variants: {
+        noMarginTop: { true: { mt: 0 } },
+    },
 })

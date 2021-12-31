@@ -208,6 +208,8 @@ export const darkTheme = createTheme({
 })
 
 export const Box = styled('div', {
+    position: 'relative',
+    boxSizing: 'border-box',
     variants: {
         centered: {
             true: {

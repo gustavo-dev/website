@@ -9,7 +9,7 @@ interface ViewCounterProps {
 
 export const ViewCounter: React.FC<ViewCounterProps> = ({ slug }) => {
     const { data } = useSWR(`/api/views/${slug}`, fetcher, {
-        refreshInterval: 60 * 1000,
+        refreshInterval: 5 * 60 * 1000,
         revalidateOnFocus: false,
     })
 

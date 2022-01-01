@@ -39,7 +39,7 @@ const IconSpan = styled('span', {
 
 export const BlogPost: React.FC<BlogPostProps> = ({ title, slug, summary }) => {
     const { data } = useSWR(`/api/views/${slug}`, fetcher, {
-        refreshInterval: 60 * 1000,
+        refreshInterval: 5 * 60 * 1000,
         revalidateOnFocus: false,
     })
     const views = new Number(data?.count)

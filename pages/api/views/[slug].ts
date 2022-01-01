@@ -22,7 +22,7 @@ export default async function handler(
             })
 
             return res.status(200).json({
-                total: newOrUpdatedViews.count.toString(),
+                count: newOrUpdatedViews.count.toString(),
             })
         }
 

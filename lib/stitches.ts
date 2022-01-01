@@ -16,8 +16,8 @@ export const {
         colors: {
             themeSwitcherBg: '#444',
             icon: '#000000',
-            'primary-color': '#0daa12',
-            'primary-color-subtle': '#0daa1220',
+            'primary-color': '#0b7000',
+            'primary-color-subtle': '#0b700020',
             'primary-text': '#000000',
             'secondary-text': '#333333',
             'description-text': '#444444',

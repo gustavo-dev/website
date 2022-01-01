@@ -62,12 +62,13 @@ const CURRICULUM_DATA = {
 }
 
 const ImageRoot = styled(Avatar.Root, {
-    display: 'inline-flex',
+    display: 'flex',
 
     position: 'relative',
 
     alignItems: 'center',
     justifyContent: 'center',
+
     verticalAlign: 'middle',
     overflow: 'hidden',
     userSelect: 'none',
@@ -213,13 +214,17 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                         </BodyText>
                     </HeroText>
                     <ImageRoot>
-                        <StyledImage
-                            src="/images/me.png"
-                            alt="Gustavo Vargas"
-                            layout="fill"
-                            quality={100}
-                            priority
-                        />
+                        <Box css={{ fixedSize: '100%', position: 'absolute' }}>
+                            <StyledImage
+                                src="/images/me.png"
+                                alt="Gustavo Vargas"
+                                layout="intrinsic"
+                                width={121}
+                                height={121}
+                                quality={100}
+                                priority
+                            />
+                        </Box>
                         <StyledFallback delayMs={1000}>G</StyledFallback>
                     </ImageRoot>
                 </Hero>

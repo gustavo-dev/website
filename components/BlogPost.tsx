@@ -1,14 +1,18 @@
 import React from 'react'
-import { YTInteraction } from 'components/YTInteraction'
-import { styled } from 'lib/stitches'
-import { ComponentDescription, ComponentTitle } from 'components/styled/Text'
+import { Box, styled } from 'lib/stitches'
+import { BodyText, ComponentTitle, MetaText } from 'components/styled/Text'
 import { EyeOpenIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 
+import useImmutableSWR from 'swr/immutable'
+
+import fetcher from 'lib/fetcher'
+
 interface BlogPostProps {
+    summary: string
     title: string
-    views: number
-    slug?: string
+    slug: string
+    publishedAt: string
 }
 
 const BlogPostContainer = styled('div', {
@@ -18,7 +22,6 @@ const BlogPostContainer = styled('div', {
 
     boxSizing: 'border-box',
 
-    p: '1rem',
     mx: 'auto',
 
     userSelect: 'none',
@@ -32,24 +35,35 @@ const IconSpan = styled('span', {
     mr: '.5rem',
 })
 
-export const BlogPost: React.FC<BlogPostProps> = ({ title, views }) => {
+export const BlogPost: React.FC<BlogPostProps> = ({ title, slug, summary }) => {
+    const { data } = useImmutableSWR(`/api/views/${slug}`, fetcher)
+    const views = new Number(data?.count)
+
     return (
-        <YTInteraction aria-label={title}>
-            <Link href="/blog">
-                <a>
-                    <BlogPostContainer>
-                        <ComponentTitle css={{ mb: '1rem' }}>
-                            {title}
-                        </ComponentTitle>
-                        <ComponentDescription>
+        <Link href={`/blog/${slug}`}>
+            <a>
+                <BlogPostContainer>
+                    <Box
+                        css={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'flex-start',
+                            mb: '0.75rem',
+                        }}
+                    >
+                        <ComponentTitle css={{ mb: 0 }}>{title}</ComponentTitle>
+                        <Box css={{ display: 'flex', alignItems: 'center' }}>
                             <IconSpan>
                                 <EyeOpenIcon />
                             </IconSpan>
-                            {views}
-                        </ComponentDescription>
-                    </BlogPostContainer>
-                </a>
-            </Link>
-        </YTInteraction>
+                            <MetaText>
+                                {views > 0 ? views.toLocaleString() : '---'}
+                            </MetaText>
+                        </Box>
+                    </Box>
+                    <BodyText>{summary}</BodyText>
+                </BlogPostContainer>
+            </a>
+        </Link>
     )
 }

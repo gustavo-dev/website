@@ -30,12 +30,36 @@ import * as Avatar from '@radix-ui/react-avatar'
 import { SiteLayout } from 'components/SiteLayout'
 import { Section } from 'components/styled/Section'
 
-import CURRICULUM_DATA from 'data/curriculum.json'
 import { Tooltip } from 'components/Tooltip'
 import { Grid, GridItem } from 'components/styled/Grid'
 import { Chip } from 'components/Chip'
 import { useTheme } from 'next-themes'
 import { NextSeo } from 'next-seo'
+
+const CURRICULUM_DATA = {
+    blocks: [
+        {
+            title: 'German Certificates',
+            checklist: [
+                { status: 'complete', name: 'IVA' },
+                { status: 'complete', name: 'DSD I' },
+                { status: 'complete', name: 'DSD II' },
+            ],
+        },
+        {
+            title: 'English Certificates',
+            checklist: [
+                { status: 'complete', name: 'Starters' },
+                { status: 'complete', name: 'Movers' },
+                { status: 'complete', name: 'Flyers' },
+                { status: 'complete', name: 'KET' },
+                { status: 'complete', name: 'PET' },
+                { status: 'complete', name: 'FCE' },
+                { status: 'due', name: 'CAE' },
+            ],
+        },
+    ],
+}
 
 const ImageRoot = styled(Avatar.Root, {
     display: 'inline-flex',
@@ -101,7 +125,7 @@ const ProjectCard = styled('div', {
     display: 'inline-block',
 
     background: '$bg-1',
-    p: '2rem',
+    pd: '2rem',
 })
 
 const CurriculumComponent = styled('div', {
@@ -112,7 +136,7 @@ const CurriculumComponent = styled('div', {
 
     background: '$bg-1',
 
-    p: '2rem',
+    pd: '2rem',
 
     br: 4,
 

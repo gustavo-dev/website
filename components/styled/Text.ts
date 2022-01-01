@@ -35,11 +35,11 @@ export const SectionTitle = styled('h3', {
     '@md': { fontSize: '$7' },
 })
 
-export const ComponentTitle = styled('h3', {
+export const ComponentTitle = styled('h4', {
     color: '$secondary-text',
 
     fontSize: '1.25rem',
-    lineHeight: '$4',
+    lineHeight: '1.75rem',
 
     fontWeight: 500,
     letterSpacing: '-.025em',
@@ -52,7 +52,9 @@ export const ComponentDescription = styled('p', {
 
     lineHeight: '1.4rem',
 
-    '& a': { color: '#09F' },
+    maxWidth: '100%',
+
+    '& a': { color: '#09F', px: '.25rem' },
 })
 
 export const BodyText = styled('p', {
@@ -74,6 +76,13 @@ export const Link = styled('a', {
 export const Caption = styled('p', {
     fontSize: '.75rem',
     lineHeight: '1.375rem',
+})
+
+export const MetaText = styled('p', {
+    color: '$body-text',
+
+    fontSize: '0.875rem',
+    lineHeight: '$1.25rem',
 })
 
 export const Span = styled('span', {})

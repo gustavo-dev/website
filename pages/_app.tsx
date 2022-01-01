@@ -10,15 +10,14 @@ const globalStyle = globalCss({
         fontFamily: 'Inter,ui-sans-serif;',
 
         transition: 'background 200ms',
-    },
 
+        boxSizing: 'border-box',
+
+        border: '0 solid',
+    },
     button: {
         border: 'none',
         ' -webkit-tap-highlight-color': 'transparent',
-    },
-
-    'ol, ul, li': {
-        listStyle: 'none',
     },
 
     a: {
@@ -32,6 +31,7 @@ const globalStyle = globalCss({
 
     '::-webkit-scrollbar': {
         width: 8,
+        height: 8,
     },
 
     '::-webkit-scrollbar-thumb': {

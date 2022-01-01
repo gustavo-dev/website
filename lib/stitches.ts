@@ -1,5 +1,4 @@
 import { createStitches } from '@stitches/react'
-import { gray, mintDark, amberDark } from '@radix-ui/colors'
 
 export const {
     styled,
@@ -15,17 +14,10 @@ export const {
 } = createStitches({
     theme: {
         colors: {
-            ...amberDark,
-            pathWall: mintDark.mint10,
-            bg: gray.gray1,
-            primaryText: gray.gray12,
-            secondaryText: gray.gray11,
-            bodyText: gray.gray11,
-            linkText: gray.gray11,
             themeSwitcherBg: '#444',
             icon: '#000000',
-            'primary-color': '#116401',
-            'primary-color-subtle': '#11640120',
+            'primary-color': '#0daa12',
+            'primary-color-subtle': '#0daa1220',
             'primary-text': '#000000',
             'secondary-text': '#333333',
             'description-text': '#444444',
@@ -35,6 +27,7 @@ export const {
             'touch-response': '#000000',
             'component-background': '#E0E0E0',
             tooltip: '#F0F0F0',
+            bg: '#FFFFFF',
             'bg-0': '#00000000',
             'bg-1': '#0000000D',
             'bg-2': '#00000012',
@@ -45,6 +38,7 @@ export const {
             'bg-12': '#00000024',
             'bg-16': '#00000026',
             'bg-24': '#00000029',
+            'alert-color': '#900',
         },
         fontSizes: {
             1: '0.875rem',
@@ -132,7 +126,7 @@ export const {
             marginTop: value,
             marginBottom: value,
         }),
-        p: (value: string | number) => ({
+        pd: (value: string | number) => ({
             padding: value,
         }),
         px: (value: string | number) => ({
@@ -176,7 +170,6 @@ export const {
 
 export const darkTheme = createTheme({
     colors: {
-        bg: '#151515',
         primaryText: '#FFFFFF',
         secondaryText: '#EAEAEA',
         bodyText: '#898989',
@@ -194,6 +187,7 @@ export const darkTheme = createTheme({
         'touch-response': '#FFFFFF',
         'component-background': '#202020',
         tooltip: '#444444',
+        bg: '#151515',
         'bg-0': '#FFFFFF00',
         'bg-1': '#FFFFFF0D',
         'bg-2': '#FFFFFF12',
@@ -204,12 +198,11 @@ export const darkTheme = createTheme({
         'bg-12': '#FFFFFF24',
         'bg-16': '#FFFFFF26',
         'bg-24': '#FFFFFF29',
+        'alert-color': '#F00',
     },
 })
 
 export const Box = styled('div', {
-    position: 'relative',
-    boxSizing: 'border-box',
     variants: {
         centered: {
             true: {

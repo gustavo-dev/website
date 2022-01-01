@@ -19,7 +19,7 @@ const StyledLink = styled('div', {
 
     borderRadius: '.5rem',
 
-    p: '.5rem .75rem',
+    pd: '.5rem .75rem',
 
     transition: 'background 200ms ease-in',
 

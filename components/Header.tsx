@@ -106,7 +106,7 @@ export const Header: React.FC = () => {
                         </YTInteraction>
                     </Hamburger>
                     <NavLink href="/" text="Home" />
-                    {/* <NavLink href="/blog" text="Blog" /> */}
+                    <NavLink href="/blog" text="Blog" />
                     {/* <NavLink href="/pathfinding" text="Pathfinding" /> */}
                 </Box>
                 <ThemeSwitcher

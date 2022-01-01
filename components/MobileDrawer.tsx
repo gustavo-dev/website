@@ -26,13 +26,13 @@ const MobileDrawerContainer = styled(motion.ul, {
     fontSize: '.875rem',
     lineHeight: '1.25rem',
     fontWeight: 600,
-
-    color: '#FAFAFA',
 })
 
 const DrawerLink = styled(motion.li, {
     marginBottom: '.5rem',
     position: 'relative',
+
+    listStyle: 'none',
 
     py: '1rem',
 

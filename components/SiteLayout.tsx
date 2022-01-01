@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout } from 'components/styled/Layout'
 import { Container } from 'components/styled/Container'
 import { Header } from 'components/Header'
-import { styled } from 'lib/stitches'
+import { Box, styled } from 'lib/stitches'
 
 const AppWrapper = styled('div', {
     display: 'flex',
@@ -21,7 +21,12 @@ export const SiteLayout: React.FC = ({ children }) => {
             <Container id="layout">
                 <Layout>
                     <Header />
-                    <div>{children}</div>
+                    <Box
+                        id="layout-inner"
+                        css={{ display: 'flex', flexDirection: 'column' }}
+                    >
+                        {children}
+                    </Box>
                 </Layout>
             </Container>
         </AppWrapper>

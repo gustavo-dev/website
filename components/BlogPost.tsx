@@ -24,6 +24,8 @@ const BlogPostContainer = styled('div', {
 
     mx: 'auto',
 
+    mb: '2rem',
+
     userSelect: 'none',
 })
 

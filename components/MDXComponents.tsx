@@ -1,6 +1,10 @@
 import Link from 'next/link'
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import { Box, styled } from 'lib/stitches'
+
+const StyledLink = styled(Link, {
+    color: '$primary-color',
+})
 
 const CustomLink: React.FC<{ href: string }> = (props) => {
     const href = props.href
@@ -9,9 +13,11 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
 
     if (isInternalLink) {
         return (
-            <Link href={href}>
-                <a {...props}>{props.children}</a>
-            </Link>
+            <StyledLink href={href}>
+                <a>
+                    <span className="link">{props.children}</span>
+                </a>
+            </StyledLink>
         )
     }
 
@@ -20,20 +26,19 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
 
 const _Image = styled(Image, { borderRadius: '0.5rem' })
 
-const MDXImage: React.FC<ImageProps> = (props) => (
+const MDXImage: React.FC<{ src: string }> = ({ src }) => (
     <Box
         css={{
             position: 'relative',
-            pt: '56.25%',
             boxSizing: 'border-box',
         }}
     >
-        <_Image {...props} />
+        <_Image src={src} layout="responsive" width="100%" height="56.25%" />
     </Box>
 )
 
 const MDXComponents = {
-    a: CustomLink,
+    Link: CustomLink,
     Image: MDXImage,
 }
 

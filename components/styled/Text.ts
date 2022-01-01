@@ -69,6 +69,7 @@ export const BodyText = styled('p', {
 export const Link = styled('a', {
     transition: 'all 500ms',
     position: 'relative',
+    cursor: 'pointer',
 
     '& :hover': { textDecoration: 'underline' },
 })

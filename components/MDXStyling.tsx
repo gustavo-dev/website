@@ -22,7 +22,7 @@ const MDXStyling = styled('article', {
         mb: '0.6em',
         lineHeight: 1.6,
     },
-    '& :where(a)': {
+    '& :where(a), .link': {
         color: '$primary-color',
         textDecoration: 'underline',
         fontWeight: 500,

@@ -260,7 +260,7 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                     </Tooltip>
                 </Box>
                 <Section>
-                    <SectionTitle>Projects</SectionTitle>
+                    <SectionTitle id="projects">Projects</SectionTitle>
 
                     {projects.map((project, i) => (
                         <ProjectCard key={i} css={{ mt: i > 0 ? '1rem' : 0 }}>

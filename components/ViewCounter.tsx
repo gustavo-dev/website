@@ -1,14 +1,17 @@
 import { EyeOpenIcon } from '@radix-ui/react-icons'
 import fetcher from 'lib/fetcher'
 import React, { useEffect } from 'react'
-import useImmutableSWR from 'swr/immutable'
+import useSWR from 'swr'
 
 interface ViewCounterProps {
     slug: string
 }
 
 export const ViewCounter: React.FC<ViewCounterProps> = ({ slug }) => {
-    const { data } = useImmutableSWR(`/api/views/${slug}`, fetcher)
+    const { data } = useSWR(`/api/views/${slug}`, fetcher, {
+        refreshInterval: 60 * 1000,
+        revalidateOnFocus: false,
+    })
 
     const views = new Number(data?.count)
 

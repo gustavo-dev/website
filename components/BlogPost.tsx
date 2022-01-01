@@ -4,7 +4,7 @@ import { BodyText, ComponentTitle, MetaText } from 'components/styled/Text'
 import { EyeOpenIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 
-import useImmutableSWR from 'swr/immutable'
+import useSWR from 'swr'
 
 import fetcher from 'lib/fetcher'
 
@@ -38,7 +38,10 @@ const IconSpan = styled('span', {
 })
 
 export const BlogPost: React.FC<BlogPostProps> = ({ title, slug, summary }) => {
-    const { data } = useImmutableSWR(`/api/views/${slug}`, fetcher)
+    const { data } = useSWR(`/api/views/${slug}`, fetcher, {
+        refreshInterval: 60 * 1000,
+        revalidateOnFocus: false,
+    })
     const views = new Number(data?.count)
 
     return (

@@ -233,6 +233,7 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
                 >
                     <Link
                         href="https://www.github.com/gustavo-dev"
+                        rel="noopener"
                         target="_blank"
                     >
                         <FiGithub color={iconsColor} size={20} />

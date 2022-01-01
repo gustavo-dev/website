@@ -1,22 +1,24 @@
 import { EyeOpenIcon } from '@radix-ui/react-icons'
-import fetcher from 'lib/fetcher'
-import React, { useEffect } from 'react'
-import useSWR from 'swr'
+import React, { useEffect, useState } from 'react'
 
 interface ViewCounterProps {
     slug: string
 }
 
 export const ViewCounter: React.FC<ViewCounterProps> = ({ slug }) => {
-    const { data } = useSWR(`/api/views/${slug}`, fetcher, {
-        refreshInterval: 5 * 60 * 1000,
-        revalidateOnFocus: false,
-    })
-
-    const views = new Number(data?.count)
+    const [views, setViews] = useState(0)
 
     useEffect(() => {
-        ;(() => fetch(`/api/views/${slug}`, { method: 'POST' }))()
+        const updateAndFetchViews = () =>
+            fetch(`/api/views/${slug}`, {
+                method: 'POST',
+            }).then(async (res) => {
+                const data = await res.json()
+
+                setViews(data.count)
+            })
+
+        updateAndFetchViews()
     }, [slug])
 
     return (

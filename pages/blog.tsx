@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { InferGetStaticPropsType } from 'next'
 import React, { useState } from 'react'
 import { SiteLayout } from 'components/SiteLayout'
 import { NextSeo } from 'next-seo'
@@ -8,10 +9,11 @@ import { Box, styled } from 'lib/stitches'
 
 import { allBlogs } from '.contentlayer/data'
 import { pick } from 'contentlayer/client'
-import { InferGetStaticPropsType } from 'next'
 import { BlogPost } from 'components/BlogPost'
 import Head from 'next/head'
 import { AdBlockAlert } from 'components/AdBlockAlert'
+
+import { prisma } from 'lib/prisma'
 
 const SearchInput = styled('input', {
     py: '0.5rem',
@@ -85,16 +87,26 @@ const Blog: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     )
 }
 
-export function getStaticProps() {
+export const getStaticProps = async () => {
+    const views = await prisma.views.findMany()
+
     const posts = allBlogs
-        .map((post) => pick(post, ['slug', 'title', 'summary', 'publishedAt']))
+        .map((post) => {
+            const _post = views.find((p) => p.slug === post.slug)
+            const postViews = _post ? _post.count : 0
+
+            return {
+                ...pick(post, ['slug', 'title', 'summary', 'publishedAt']),
+                views: postViews,
+            }
+        })
         .sort(
             (a, b) =>
                 Number(new Date(b.publishedAt)) -
                 Number(new Date(a.publishedAt))
         )
 
-    return { props: { posts } }
+    return { props: { posts }, revalidate: 10 * 60 }
 }
 
 export default Blog

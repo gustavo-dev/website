@@ -4,15 +4,12 @@ import { BodyText, ComponentTitle, MetaText } from 'components/styled/Text'
 import { EyeOpenIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 
-import useSWR from 'swr'
-
-import fetcher from 'lib/fetcher'
-
 interface BlogPostProps {
     summary: string
     title: string
     slug: string
     publishedAt: string
+    views: number
 }
 
 const BlogPostContainer = styled('div', {
@@ -37,13 +34,12 @@ const IconSpan = styled('span', {
     mr: '.5rem',
 })
 
-export const BlogPost: React.FC<BlogPostProps> = ({ title, slug, summary }) => {
-    const { data } = useSWR(`/api/views/${slug}`, fetcher, {
-        refreshInterval: 5 * 60 * 1000,
-        revalidateOnFocus: false,
-    })
-    const views = new Number(data?.count)
-
+export const BlogPost: React.FC<BlogPostProps> = ({
+    title,
+    slug,
+    summary,
+    views,
+}) => {
     return (
         <Link href={`/blog/${slug}`}>
             <a>

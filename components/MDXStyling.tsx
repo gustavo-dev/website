@@ -14,6 +14,8 @@ const MDXStyling = styled('article', {
         mt: '2em',
         mb: '1em',
         lineHeight: 1.3333333,
+
+        position: 'relative',
     },
     '& :where(h3)': {
         fontWeight: 600,
@@ -21,6 +23,8 @@ const MDXStyling = styled('article', {
         mt: '1.6em',
         mb: '0.6em',
         lineHeight: 1.6,
+
+        position: 'relative',
     },
     '& :where(a), .link': {
         color: '$primary-color',
@@ -79,6 +83,24 @@ const MDXStyling = styled('article', {
     '& :where(th), & :where(td)': {
         pd: '.675rem',
         borderBottom: '1px solid $bg-4;',
+    },
+    '.anchor': {
+        position: 'absolute',
+
+        cursor: 'pointer',
+
+        maxWidth: 852,
+        width: '100%',
+        ml: '-1.5rem',
+
+        top: 0,
+        left: 0,
+
+        textDecoration: 'none',
+    },
+    '.anchor:after': {
+        content: '#',
+        color: '$bg-6',
     },
     '.token.string, .token.attr-value, .token.attr-value>.token.punctuation': {
         color: '#FF0',

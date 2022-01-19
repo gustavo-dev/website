@@ -26,9 +26,10 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
 
 const _Image = styled(Image, { borderRadius: '0.5rem' })
 
-const MDXImage: React.FC<{ src: string; priority?: boolean }> = ({
+const MDXImage: React.FC<{ src: string; alt: string; priority?: boolean }> = ({
     src,
     priority = false,
+    alt,
 }) => (
     <Box
         css={{
@@ -38,6 +39,7 @@ const MDXImage: React.FC<{ src: string; priority?: boolean }> = ({
     >
         <_Image
             src={src}
+            alt={alt}
             priority={priority}
             layout="responsive"
             width="100%"

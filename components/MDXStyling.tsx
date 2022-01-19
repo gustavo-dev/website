@@ -70,6 +70,16 @@ const MDXStyling = styled('article', {
         borderColor: '$bg-6',
         my: '3em',
     },
+    '& :where(table)': {
+        px: '1rem',
+        background: '$bg-1',
+        br: '.25rem',
+        textAlign: 'center',
+    },
+    '& :where(th), & :where(td)': {
+        pd: '.675rem',
+        borderBottom: '1px solid $bg-4;',
+    },
     '.token.string, .token.attr-value, .token.attr-value>.token.punctuation': {
         color: '#FF0',
     },

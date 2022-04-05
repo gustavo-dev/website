@@ -177,7 +177,9 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
         },
     })
 
-    const hopes = await api.get<GithubRepo>('/hopes')
+    const steamTradeOfferTracker = await api.get<GithubRepo>(
+        '/steam-trade-offer-tracker'
+    )
     const csgoempire = await api.get<GithubRepo>('/csgoempire-api')
 
     return {
@@ -185,9 +187,14 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
             // Axios is returning the data as a string for some reason
             // so we need to convert to a JSON object util we find a fix
             // for it
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            projects: [JSON.parse(csgoempire.data), JSON.parse(hopes.data)],
+            projects: [
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                JSON.parse(steamTradeOfferTracker.data),
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                JSON.parse(csgoempire.data),
+            ],
         },
     }
 }

@@ -150,7 +150,7 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                 <h2 className="text-2xl font-bold">Things I do...</h2>
                 <p className="opacity-80">
                     Most of the projects I've worked on are private, so I can't
-                    link their source code. During the pandemic, I've focused on
+                    link their source code. During the pandemic, I focused on
                     freelancing and haven't really contributed to open source
                     projects. Below are a few of my open source projects. They
                     are few for now but will increase over time.

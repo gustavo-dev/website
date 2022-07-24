@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import type { GetStaticProps } from 'next'
 import Image from 'next/future/image'
@@ -26,42 +27,6 @@ import { AiOutlineStar } from 'react-icons/ai'
 
 import { ListItem } from 'src/pages/components/list-item'
 import { useLanyard } from 'use-lanyard'
-import Link from 'next/link'
-
-type User = {
-    login: string
-    id: number
-    node_id: string
-    avatar_url: string
-    gravatar_id: string
-    url: string
-    html_url: string
-    followers_url: string
-    following_url: string
-    gists_url: string
-    starred_url: string
-    subscriptions_url: string
-    organizations_url: string
-    repos_url: string
-    events_url: string
-    received_events_url: string
-    type: string
-    site_admin: boolean
-    name: string
-    company: string
-    blog: string
-    location: string
-    email: string | null
-    hireable: boolean
-    bio: string
-    twitter_username: string
-    public_repos: number
-    public_gists: number
-    followers: number
-    following: number
-    created_at: string
-    updated_at: string
-}
 
 export type PinnedRepo = {
     owner: string

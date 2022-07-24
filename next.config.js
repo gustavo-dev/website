@@ -1,10 +1,4 @@
-const { withContentlayer } = require('next-contentlayer')
-
-module.exports = withContentlayer()({
+module.exports = {
     reactStrictMode: true,
     swcMinify: true,
-    experimental: {
-        concurrentFeatures: false,
-        serverComponents: false,
-    },
-})
+}

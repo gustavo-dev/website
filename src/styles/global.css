@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    min-width: 360px;
+    scroll-behavior: smooth;
+    font-family: Inter, ui-sans-serif;
+
+    font-weight: 400;
+    font-size: 0.9rem;
+
+    @apply text-white;
+}
+
+body {
+    background: linear-gradient(180deg, transparent 0, #111 450px),
+        fixed 0 0 /20px 20px radial-gradient(#313131 1px, transparent 0),
+        fixed 10px 10px /20px 20px radial-gradient(#313131 1px, transparent 0);
+
+    @apply bg-gray-900;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+p {
+    @apply leading-relaxed;
+}

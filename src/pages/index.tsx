@@ -25,7 +25,7 @@ import { BiGitRepoForked } from 'react-icons/bi'
 
 import { AiOutlineStar } from 'react-icons/ai'
 
-import { ListItem } from 'src/pages/components/list-item'
+import ListItem from 'src/pages/components/list-item'
 import { useLanyard } from 'use-lanyard'
 
 export type PinnedRepo = {

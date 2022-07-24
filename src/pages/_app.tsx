@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <title>Gustavo Vargas</title>
             </Head>
             <div className="mx-auto max-w-4xl py-10 px-5">
-                <main className="mx-auto space-y-12">
+                <main className="mx-auto space-y-12 md:py-24">
                     <Component {...pageProps} />
                 </main>
             </div>

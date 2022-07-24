@@ -10,11 +10,11 @@ html {
     font-weight: 400;
     font-size: 0.9rem;
 
-    @apply text-white;
+    @apply text-white subpixel-antialiased;
 }
 
 body {
-    background: linear-gradient(180deg, transparent 0, #111 450px),
+    background: linear-gradient(180deg, transparent 0, #111 550px),
         fixed 0 0 /20px 20px radial-gradient(#313131 1px, transparent 0),
         fixed 10px 10px /20px 20px radial-gradient(#313131 1px, transparent 0);
 

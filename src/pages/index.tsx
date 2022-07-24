@@ -25,8 +25,12 @@ import {
     SiWebstorm,
     SiYarn,
 } from 'react-icons/si'
+
+import { AiOutlineStar } from 'react-icons/ai'
+
 import Head from 'next/head'
 import { ListItem } from 'src/pages/components/list-item'
+import Link from 'next/link'
 
 type User = {
     login: string
@@ -88,12 +92,48 @@ export const getStaticProps: GetStaticProps<Props> = async function () {
     }
 }
 
+const ProjectCard: React.FC<PinnedRepo> = (project) => {
+    return (
+        <a
+            href={`https://github.com/${project.owner}/${project.repo}`}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-gray-800 py-4 px-6 space-y-3 border border-gray-600 rounded first-letter:cursor-pointer hover:scale-[1.02] duration-200 will-change-transform"
+        >
+            <div className="flex justify-between items-center">
+                <h3 className="font-bold">{project.repo}</h3>
+                <div className="flex justify-center items-center gap-1">
+                    <AiOutlineStar size={16} />
+                    <span>{project.stars}</span>
+                </div>
+            </div>
+            <div className="border-b border-gray-600" />
+            <p>{project.description}</p>
+        </a>
+    )
+}
+
 const Home: React.FC<Props> = ({ pinnedRepos }) => {
     return (
         <>
             <div className="space-y-4">
-                <div>
-                    <SiGithub size={24} />
+                <div className="flex items-center gap-4">
+                    <a
+                        href="https://github.com/gustavo-dev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="cursor-pointer"
+                    >
+                        <SiGithub size={24} />
+                    </a>
+                    <a
+                        href="https://twitter.com/tavin_dev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="cursor-pointer"
+                    >
+                        <SiTwitter size={24} />
+                    </a>
                 </div>
                 <h1 className="text-3xl font-bold">Hi! I am Gustavo!</h1>
                 <p className="opacity-80">
@@ -105,20 +145,18 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
             <section className="space-y-4">
                 <h2 className="text-2xl font-bold">Things I do...</h2>
                 <p className="opacity-80">Most of the projects I've done </p>
-                <div>
+                <div className="grid gap-2 sm:gap-4 sm:grid-cols-2">
                     {pinnedRepos.map((repo, i) => {
-                        return <div key={`repo-${i}`}>{repo.description}</div>
+                        return <ProjectCard key={i} {...repo} />
                     })}
                 </div>
             </section>
             <section className="space-y-4">
                 <h2 className="text-2xl font-bold">Technologies I use</h2>
                 <p className="opacity-80">
-                    These are the technologies I mostly use to tackle my day to
-                    day problems.
+                    These are a few of the technologies I use in my projects.
                 </p>
-                <ul className="grid grid-cols-3 gap-4 sm:grid-cols-4">
-                    <ListItem icon={SiGithub} text="Github" />
+                <ul className="grid grid-cols-3 gap-5 sm:grid-cols-4">
                     <ListItem icon={SiGit} text="Git" />
                     <ListItem icon={SiReact} text="React" />
                     <ListItem icon={SiNextDotJs} text="NextJs" />

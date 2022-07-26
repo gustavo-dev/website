@@ -214,8 +214,8 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                     Most of the projects I've worked on are private, so I can't
                     link their source code. During the pandemic, I focused on
                     freelancing and haven't really contributed to open source
-                    projects. Below are a few of my open source projects. They
-                    are few for now but will increase over time.
+                    but below are a few of my public projects. Not many for now
+                    but expect them to increase over time.
                 </p>
                 <div className="grid gap-2 sm:gap-4 sm:grid-cols-2">
                     {pinnedRepos.map((repo, i) => {

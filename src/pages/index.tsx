@@ -4,6 +4,7 @@ import type { GetStaticProps } from 'next'
 import Image from 'next/future/image'
 
 import {
+    SiDiscord,
     SiDocker,
     SiGit,
     SiGithub,
@@ -134,9 +135,9 @@ function AnimatedBars() {
 
     return (
         <div className="w-auto flex gap-1 items-end overflow-hidden">
-            <span id="bar1" className="w-[1.5px] h-2 bg-gray-300 opacity-75" />
-            <span id="bar2" className="w-[1.5px] h-1 bg-gray-300" />
-            <span id="bar3" className="w-[1.5px] h-3 bg-gray-300 opacity-80" />
+            <span id="bar1" className="w-[1.5px] h-2 bg-current opacity-75" />
+            <span id="bar2" className="w-[1.5px] h-1 bg-current " />
+            <span id="bar3" className="w-[2px] h-3 bg-current  opacity-80" />
         </div>
     )
 }
@@ -149,7 +150,7 @@ const SpotifyActivity = () => {
 
     return (
         <div
-            className="flex justify-center items-center gap-2 opacity-80 cursor-pointer hover:opacity-100 duration-200"
+            className="flex justify-center items-center gap-2 opacity-80 cursor-pointer group hover:opacity-100 transition-all duration-300 ease-out"
             onClick={() => {
                 if (trackId) {
                     window.open(`https://open.spotify.com/track/${trackId}`)
@@ -167,7 +168,7 @@ const SpotifyActivity = () => {
                         alt="Album art"
                     />
                 )}
-                <div className="flex items-center gap-2 py-2 px-3">
+                <div className="flex items-center gap-2 py-2 px-3 text-gray-200 group-hover:text-[#1DB954] transition-all duration-300 ease-out">
                     <span>{song ?? 'Not Playing'}</span>
                     {song ? <AnimatedBars /> : <SiSpotify />}
                 </div>
@@ -177,16 +178,22 @@ const SpotifyActivity = () => {
 }
 
 const Home: React.FC<Props> = ({ pinnedRepos }) => {
+    // Not so sure if this is the best way to do this
+    const [copiedToClipboard, setCopiedToClipboard] = React.useState(false)
+    const copiedToClipboardTimeoutRef = React.useRef<NodeJS.Timeout>(
+        setTimeout(() => {})
+    )
+
     return (
         <>
             <div className="space-y-4">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
                     <div className="flex items-center gap-4">
                         <a
                             href="https://github.com/gustavo-dev"
                             target="_blank"
                             rel="noreferrer"
-                            className="cursor-pointer"
+                            className="cursor-pointer transition-all duration-200 hover:-translate-y-[2px]"
                         >
                             <SiGithub size={24} />
                         </a>
@@ -194,10 +201,33 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                             href="https://twitter.com/tavin_dev"
                             target="_blank"
                             rel="noreferrer"
-                            className="cursor-pointer"
+                            className="cursor-pointer hover:text-[#1DA1F2] transition-all duration-200 hover:-translate-y-[2px]"
                         >
-                            <SiTwitter size={24} />
+                            <SiTwitter size={26} />
                         </a>
+                        <div
+                            onClick={() => {
+                                navigator.clipboard.writeText('tavin#5205')
+                                setCopiedToClipboard(true)
+
+                                if (copiedToClipboardTimeoutRef.current) {
+                                    clearTimeout(
+                                        copiedToClipboardTimeoutRef.current
+                                    )
+                                }
+
+                                copiedToClipboardTimeoutRef.current =
+                                    setTimeout(() => {
+                                        setCopiedToClipboard(false)
+                                    }, 3000)
+                            }}
+                            className="flex items-center gap-3 cursor-pointer font-bold hover:text-[#7289DA] transition-all duration-200 hover:-translate-y-[2px] select-none flex-nowrap text-ellipsis"
+                        >
+                            <SiDiscord size={26} />
+                            {copiedToClipboard && (
+                                <span>Copied to clipboard!</span>
+                            )}
+                        </div>
                     </div>
                     <SpotifyActivity />
                 </div>

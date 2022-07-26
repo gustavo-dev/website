@@ -233,9 +233,9 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                 </div>
                 <h1 className="text-3xl font-bold">Hi! I'm Gustavo!</h1>
                 <p className="opacity-80">
-                    I'm a 18 years old software engineer from Brazil. I'm really
-                    into full stack web development and problem solving in
-                    general.
+                    I'm a 18 years old software developer from Brazil. I'm
+                    really into full stack web development and problem solving
+                    in general.
                 </p>
             </div>
             <section className="space-y-4">

@@ -46,7 +46,7 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async function () {
     const pinnedRepos = await fetch(
-        'https://gh-pinned-repos.egoist.sh/?username=gustavo-dev'
+        `https://gh-pinned-repos.egoist.sh/?username=${process.env.VERCEL_GIT_REPO_OWNER}`
     ).then(async (response) => response.json() as Promise<PinnedRepo[]>)
 
     return {

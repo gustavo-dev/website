@@ -178,12 +178,6 @@ const SpotifyActivity = () => {
 }
 
 const Home: React.FC<Props> = ({ pinnedRepos }) => {
-    // Not so sure if this is the best way to do this
-    const [copiedToClipboard, setCopiedToClipboard] = React.useState(false)
-    const copiedToClipboardTimeoutRef = React.useRef<NodeJS.Timeout>(
-        setTimeout(() => {})
-    )
-
     return (
         <>
             <div className="space-y-4">
@@ -205,29 +199,13 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                         >
                             <SiTwitter size={26} />
                         </a>
-                        <div
-                            onClick={() => {
-                                navigator.clipboard.writeText('tavin#5205')
-                                setCopiedToClipboard(true)
-
-                                if (copiedToClipboardTimeoutRef.current) {
-                                    clearTimeout(
-                                        copiedToClipboardTimeoutRef.current
-                                    )
-                                }
-
-                                copiedToClipboardTimeoutRef.current =
-                                    setTimeout(() => {
-                                        setCopiedToClipboard(false)
-                                    }, 3000)
-                            }}
+                        <a
+                            href="discord://discordapp.com/users/315848583024869379"
+                            rel="noreferrer"
                             className="flex items-center gap-3 cursor-pointer font-bold hover:text-[#7289DA] transition-all duration-200 hover:-translate-y-[2px] select-none flex-nowrap text-ellipsis"
                         >
                             <SiDiscord size={26} />
-                            {copiedToClipboard && (
-                                <span>Copied to clipboard!</span>
-                            )}
-                        </div>
+                        </a>
                     </div>
                     <SpotifyActivity />
                 </div>

@@ -298,6 +298,15 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                     <ListItem icon={SiTailwindcss} text="TailwindCSS" />
                 </ul>
             </section>
+            {/* <section>
+                <iframe
+                    src="https://github.com/sponsors/tavindev/button"
+                    title="Sponsor tavindev"
+                    height="35"
+                    width="116"
+                    style={{ border: 0 }}
+                ></iframe>
+            </section> */}
         </>
     )
 }

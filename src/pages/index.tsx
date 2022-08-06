@@ -184,7 +184,7 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                 <div className="flex flex-col-reverse gap-4 sm:flex-row justify-between items-center">
                     <div className="flex items-center gap-4">
                         <a
-                            href="https://github.com/gustavo-dev"
+                            href={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}`}
                             target="_blank"
                             rel="noreferrer"
                             className="cursor-pointer transition-all duration-200 hover:-translate-y-[2px]"

@@ -6,6 +6,6 @@ module.exports = {
     },
     experimental: {
         appDir: true,
-        runtime: 'experimental-edge',
+        // runtime: 'experimental-edge',
     },
 };

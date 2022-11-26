@@ -1,7 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
+import React from 'react';
+import {
+    SiDocker,
+    SiGit,
+    SiMysql,
+    SiNextdotjs as SiNextDotJs,
+    SiNodedotjs as SiNodeDotJs,
+    SiPnpm,
+    SiPostgresql,
+    SiReact,
+    SiRedis,
+    SiTailwindcss,
+    SiTypescript,
+    SiYarn,
+} from 'react-icons/si';
+import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
 import { SpotifyActivity } from 'src/app/SpotifyActivity';
-import Technologies from 'src/app/Technologies';
 
 async function getData(): Promise<PinnedRepo[]> {
     const response = await fetch(
@@ -125,7 +140,18 @@ export default async function Page() {
                     These are a few of the technologies I use in my projects.
                 </p>
                 <ul className="grid grid-cols-3 gap-5 sm:grid-cols-4">
-                    <Technologies />
+                    <ListItem icon={SiGit} text="Git" />
+                    <ListItem icon={SiReact} text="React" />
+                    <ListItem icon={SiNextDotJs} text="NextJs" />
+                    <ListItem icon={SiNodeDotJs} text="NodeJs" />
+                    <ListItem icon={SiTypescript} text="TypeScript" />
+                    <ListItem icon={SiPnpm} text="Pnpm" />
+                    <ListItem icon={SiYarn} text="Yarn" />
+                    <ListItem icon={SiMysql} text="MySQL" />
+                    <ListItem icon={SiPostgresql} text="PostgreSQL" />
+                    <ListItem icon={SiRedis} text="Redis" />
+                    <ListItem icon={SiDocker} text="Docker" />
+                    <ListItem icon={SiTailwindcss} text="TailwindCSS" />
                 </ul>
             </section>
             {/* <section>

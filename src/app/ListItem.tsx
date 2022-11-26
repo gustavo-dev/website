@@ -1,5 +1,7 @@
-import { ReactNode } from 'react'
-import type { IconType } from 'react-icons'
+'use client';
+
+import { ReactNode } from 'react';
+import type { IconType } from 'react-icons';
 
 export function ListItem({ text, icon }: { text: ReactNode; icon: IconType }) {
     return (
@@ -7,5 +9,5 @@ export function ListItem({ text, icon }: { text: ReactNode; icon: IconType }) {
             <span>{icon({ className: 'h-6 w-6' })}</span>
             <span>{text}</span>
         </li>
-    )
+    );
 }

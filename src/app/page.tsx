@@ -1,6 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import {} from 'react-icons/si';
-import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
 import { SpotifyActivity } from 'src/app/SpotifyActivity';
 import Technologies from 'src/app/Technologies';

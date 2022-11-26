@@ -1,25 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import {
-    SiDiscord,
-    SiDocker,
-    SiGit,
-    SiGithub,
-    SiMysql,
-    SiNextdotjs as SiNextDotJs,
-    SiNodedotjs as SiNodeDotJs,
-    SiPnpm,
-    SiPostgresql,
-    SiReact,
-    SiRedis,
-    SiSpotify,
-    SiTailwindcss,
-    SiTwitter,
-    SiTypescript,
-    SiYarn,
-} from 'react-icons/si';
+import {} from 'react-icons/si';
 import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
 import { SpotifyActivity } from 'src/app/SpotifyActivity';
+import Technologies from 'src/app/Technologies';
 
 async function getData(): Promise<PinnedRepo[]> {
     const response = await fetch(
@@ -42,7 +26,7 @@ export default async function Page() {
             <div className="space-y-4">
                 <div className="flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
                     <div className="flex items-center gap-4">
-                        <a
+                        {/* <a
                             href={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}`}
                             target="_blank"
                             rel="noreferrer"
@@ -64,7 +48,7 @@ export default async function Page() {
                             className="flex items-center gap-3 cursor-pointer font-bold hover:text-[#7289DA] transition-all duration-200 hover:-translate-y-[2px] select-none flex-nowrap text-ellipsis"
                         >
                             <SiDiscord size={26} />
-                        </a>
+                        </a> */}
                     </div>
                     <SpotifyActivity />
                 </div>
@@ -143,18 +127,7 @@ export default async function Page() {
                     These are a few of the technologies I use in my projects.
                 </p>
                 <ul className="grid grid-cols-3 gap-5 sm:grid-cols-4">
-                    <ListItem icon={SiGit} text="Git" />
-                    <ListItem icon={SiReact} text="React" />
-                    <ListItem icon={SiNextDotJs} text="NextJs" />
-                    <ListItem icon={SiNodeDotJs} text="NodeJs" />
-                    <ListItem icon={SiTypescript} text="TypeScript" />
-                    <ListItem icon={SiPnpm} text="Pnpm" />
-                    <ListItem icon={SiYarn} text="Yarn" />
-                    <ListItem icon={SiMysql} text="MySQL" />
-                    <ListItem icon={SiPostgresql} text="PostgreSQL" />
-                    <ListItem icon={SiRedis} text="Redis" />
-                    <ListItem icon={SiDocker} text="Docker" />
-                    <ListItem icon={SiTailwindcss} text="TailwindCSS" />
+                    <Technologies />
                 </ul>
             </section>
             {/* <section>

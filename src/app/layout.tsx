@@ -1,12 +1,19 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
+import { Inter } from '@next/font/google';
+import Head from 'next/head';
+import '../styles/global.css';
 
-import '../styles/global.css'
+const inter = Inter({
+    subsets: ['latin'],
+});
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function RootLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
-        <>
-            <Head>
+        <html>
+            <head>
                 <title>Gustavo</title>
                 <meta
                     name="description"
@@ -17,13 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                     type="image/x-icon"
                     href="https://www.gravatar.com/avatar/05385faec6136dc4ca10e3729fca6c57?s=256&d=identicon&r=PG"
                 />
-            </Head>
-            <div className="mx-auto max-w-4xl py-10 px-5">
-                <main className="mx-auto space-y-12 md:py-24">
-                    <Component {...pageProps} />
-                </main>
+            </head>
+            <div className={`max-w-4xl px-5 py-10 mx-auto ${inter.className}`}>
+                <main className="mx-auto space-y-12 md:py-24">{children}</main>
             </div>
-        </>
-    )
+        </html>
+    );
 }
-export default MyApp

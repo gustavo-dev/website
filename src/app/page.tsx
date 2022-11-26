@@ -1,8 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-import React, { useEffect } from 'react'
-import type { GetStaticProps } from 'next'
-import Image from 'next/future/image'
-
 import {
     SiDiscord,
     SiDocker,
@@ -20,168 +15,33 @@ import {
     SiTwitter,
     SiTypescript,
     SiYarn,
-} from 'react-icons/si'
+} from 'react-icons/si';
+import { ListItem } from 'src/app/ListItem';
+import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
+import { SpotifyActivity } from 'src/app/SpotifyActivity';
 
-import { BiGitRepoForked } from 'react-icons/bi'
+export default async function Page() {
+    const response = await fetch(
+        `https://gh-pinned-repos.egoist.dev/?username=${process.env.VERCEL_GIT_REPO_OWNER}`,
+        {
+            next: {
+                revalidate: 60 * 60 * 24,
+            },
+        }
+    );
 
-import { AiOutlineStar } from 'react-icons/ai'
-
-import { ListItem } from 'src/components/list-item'
-import { useLanyard } from 'use-lanyard'
-import { animate } from 'motion'
-
-export type PinnedRepo = {
-    owner: string
-    repo: string
-    description: string
-    language: string
-    languageColor: string
-    stars: string
-    forks: string
-}
-
-type Props = {
-    pinnedRepos: PinnedRepo[]
-}
-
-export const getStaticProps: GetStaticProps<Props> = async function () {
-    const pinnedRepos = await fetch(
-        `https://gh-pinned-repos.egoist.sh/?username=${process.env.VERCEL_GIT_REPO_OWNER}`
-    ).then(async (response) => response.json() as Promise<PinnedRepo[]>)
-
-    return {
-        props: { pinnedRepos },
-        revalidate: 120,
+    if (!response.ok) {
+        return {
+            notFound: true,
+        };
     }
-}
 
-const ProjectCard: React.FC<PinnedRepo> = (project) => {
-    return (
-        <a
-            href={`https://github.com/${project.owner}/${project.repo}`}
-            target="_blank"
-            rel="noreferrer"
-            className="bg-gray-800 py-4 px-5 space-y-3 border border-gray-600 rounded first-letter:cursor-pointer hover:scale-[1.02] duration-200 will-change-transform"
-        >
-            <div className="flex justify-between items-center">
-                <h3 className="font-bold">{project.repo}</h3>
-                <div className="flex justify-center items-center gap-2">
-                    <div className="flex justify-center items-center gap-1">
-                        <AiOutlineStar size={16} />
-                        <span>{project.stars}</span>
-                    </div>
-                    <div className="flex justify-center items-center gap-1">
-                        <BiGitRepoForked size={16} />
-                        <span>{project.forks}</span>
-                    </div>
-                </div>
-            </div>
-            <div className="border-b border-gray-600" />
-            <p>{project.description}</p>
-        </a>
-    )
-}
+    const pinnedRepos = (await response.json()) as PinnedRepo[];
 
-function AnimatedBars() {
-    useEffect(() => {
-        animate(
-            '#bar1',
-            {
-                transform: [
-                    'scaleY(1.0) translateY(0rem)',
-                    'scaleY(1.5) translateY(-0.082rem)',
-                    'scaleY(1.0) translateY(0rem)',
-                ],
-            },
-            {
-                duration: 1.0,
-                repeat: Infinity,
-                easing: ['ease-in-out'],
-            }
-        )
-        animate(
-            '#bar2',
-            {
-                transform: [
-                    'scaleY(1.0) translateY(0rem)',
-                    'scaleY(3) translateY(-0.083rem)',
-                    'scaleY(1.0) translateY(0rem)',
-                ],
-            },
-            {
-                delay: 0.2,
-                duration: 1.5,
-                repeat: Infinity,
-                easing: ['ease-in-out'],
-            }
-        )
-        animate(
-            '#bar3',
-            {
-                transform: [
-                    'scaleY(1.0)  translateY(0rem)',
-                    'scaleY(0.5) translateY(0.37rem)',
-                    'scaleY(1.0)  translateY(0rem)',
-                ],
-            },
-            {
-                delay: 0.3,
-                duration: 1.5,
-                repeat: Infinity,
-                easing: ['ease-in-out'],
-            }
-        )
-    }, [])
-
-    return (
-        <div className="w-auto flex gap-1 items-end overflow-hidden">
-            <span id="bar1" className="w-[1.5px] h-2 bg-current opacity-75" />
-            <span id="bar2" className="w-[1.5px] h-1 bg-current " />
-            <span id="bar3" className="w-[2px] h-3 bg-current  opacity-80" />
-        </div>
-    )
-}
-
-const SpotifyActivity = () => {
-    const { data } = useLanyard('315848583024869379')
-
-    const trackId = data?.spotify?.track_id
-    const song = data?.spotify?.song
-
-    return (
-        <div
-            className="flex justify-center items-center gap-2 opacity-80 cursor-pointer group hover:opacity-100 transition-all duration-300 ease-out"
-            onClick={() => {
-                if (trackId) {
-                    window.open(`https://open.spotify.com/track/${trackId}`)
-                }
-            }}
-            aria-disabled={!trackId}
-        >
-            <div className="flex justify-center bg-gray-700 rounded">
-                {data?.spotify && (
-                    <Image
-                        className="rounded-tl rounded-bl"
-                        src={data.spotify.album_art_url}
-                        width={35}
-                        height={35}
-                        alt="Album art"
-                    />
-                )}
-                <div className="flex items-center gap-2 py-2 px-3 text-gray-200 group-hover:text-[#1DB954] transition-all duration-300 ease-out">
-                    <span>{song ?? 'Not Playing'}</span>
-                    {song ? <AnimatedBars /> : <SiSpotify />}
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const Home: React.FC<Props> = ({ pinnedRepos }) => {
     return (
         <>
             <div className="space-y-4">
-                <div className="flex flex-col-reverse gap-4 sm:flex-row justify-between items-center">
+                <div className="flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
                     <div className="flex items-center gap-4">
                         <a
                             href={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}`}
@@ -227,14 +87,14 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                 </p>
                 <div className="grid gap-2 sm:gap-4 sm:grid-cols-2">
                     {pinnedRepos.map((repo, i) => {
-                        return <ProjectCard key={i} {...repo} />
+                        return <ProjectCard key={i} {...repo} />;
                     })}
                 </div>
                 <div className="space-y-2">
                     <p className="opacity-80">
                         A few of the private projects I've worked on are:
                     </p>
-                    <ul className="opacity-80 space-y-2 list-disc">
+                    <ul className="space-y-2 list-disc opacity-80">
                         <div className="pl-12 space-y-2">
                             <li>
                                 <a
@@ -308,7 +168,5 @@ const Home: React.FC<Props> = ({ pinnedRepos }) => {
                 ></iframe>
             </section> */}
         </>
-    )
+    );
 }
-
-export default Home

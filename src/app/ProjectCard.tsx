@@ -1,15 +1,17 @@
-import { AiOutlineStar } from 'react-icons/ai'
-import { BiGitRepoForked } from 'react-icons/bi'
+'use client';
+
+import { AiOutlineStar } from 'react-icons/ai';
+import { BiGitRepoForked } from 'react-icons/bi';
 
 export type PinnedRepo = {
-    owner: string
-    repo: string
-    description: string
-    language: string
-    languageColor: string
-    stars: string
-    forks: string
-}
+    owner: string;
+    repo: string;
+    description: string;
+    language: string;
+    languageColor: string;
+    stars: string;
+    forks: string;
+};
 
 export const ProjectCard: React.FC<PinnedRepo> = (project) => {
     return (
@@ -35,5 +37,5 @@ export const ProjectCard: React.FC<PinnedRepo> = (project) => {
             <div className="border-b border-gray-600" />
             <p>{project.description}</p>
         </a>
-    )
-}
+    );
+};

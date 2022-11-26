@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
     SiDiscord,
     SiDocker,
@@ -20,7 +21,7 @@ import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
 import { SpotifyActivity } from 'src/app/SpotifyActivity';
 
-export default async function Page() {
+async function getData(): Promise<PinnedRepo[]> {
     const response = await fetch(
         `https://gh-pinned-repos.egoist.dev/?username=${process.env.VERCEL_GIT_REPO_OWNER}`,
         {
@@ -30,16 +31,14 @@ export default async function Page() {
         }
     );
 
-    if (!response.ok) {
-        return {
-            notFound: true,
-        };
-    }
+    return response.json();
+}
 
-    const pinnedRepos = (await response.json()) as PinnedRepo[];
+export default async function Page() {
+    const pinnedRepos = await getData();
 
     return (
-        <>
+        <main className="mx-auto space-y-12 md:py-24">
             <div className="space-y-4">
                 <div className="flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
                     <div className="flex items-center gap-4">
@@ -167,6 +166,6 @@ export default async function Page() {
                     style={{ border: 0 }}
                 ></iframe>
             </section> */}
-        </>
+        </main>
     );
 }

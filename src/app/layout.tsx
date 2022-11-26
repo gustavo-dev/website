@@ -1,5 +1,4 @@
 import { Inter } from '@next/font/google';
-import Head from 'next/head';
 import '../styles/global.css';
 
 const inter = Inter({
@@ -26,7 +25,7 @@ export default function RootLayout({
                 />
             </head>
             <div className={`max-w-4xl px-5 py-10 mx-auto ${inter.className}`}>
-                <main className="mx-auto space-y-12 md:py-24">{children}</main>
+                {children}
             </div>
         </html>
     );

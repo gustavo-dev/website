@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import type { IconType } from 'react-icons';
 

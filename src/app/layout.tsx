@@ -24,7 +24,7 @@ export default function RootLayout({
                     href="https://www.gravatar.com/avatar/05385faec6136dc4ca10e3729fca6c57?s=256&d=identicon&r=PG"
                 />
             </head>
-            <div className={`max-w-4xl px-5 py-10 mx-auto ${inter.className}`}>
+            <div className={`max-w-4xl p-5 mx-auto ${inter.className}`}>
                 {children}
             </div>
         </html>

@@ -10,6 +10,7 @@ import {
     SiPostgresql,
     SiReact,
     SiRedis,
+    SiRust,
     SiTailwindcss,
     SiTypescript,
     SiYarn,
@@ -157,6 +158,7 @@ export default async function Page() {
                     <ListItem icon={SiRedis} text="Redis" />
                     <ListItem icon={SiDocker} text="Docker" />
                     <ListItem icon={SiTailwindcss} text="TailwindCSS" />
+                    <ListItem icon={SiRust} text="SiRust" />
                 </ul>
             </section>
             {/* <section>

@@ -13,6 +13,7 @@ import {
     SiTailwindcss,
     SiTypescript,
     SiYarn,
+    SiRust,
 } from 'react-icons/si';
 import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
@@ -157,6 +158,7 @@ export default async function Page() {
                     <ListItem icon={SiRedis} text="Redis" />
                     <ListItem icon={SiDocker} text="Docker" />
                     <ListItem icon={SiTailwindcss} text="TailwindCSS" />
+                    <ListItem icon={SiRust} text="Rust" />
                 </ul>
             </section>
             {/* <section>

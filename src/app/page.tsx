@@ -158,7 +158,7 @@ export default async function Page() {
                     <ListItem icon={SiRedis} text="Redis" />
                     <ListItem icon={SiDocker} text="Docker" />
                     <ListItem icon={SiTailwindcss} text="TailwindCSS" />
-                    <ListItem icon={SiRust} text="SiRust" />
+                    <ListItem icon={SiRust} text="Rust" />
                 </ul>
             </section>
             {/* <section>

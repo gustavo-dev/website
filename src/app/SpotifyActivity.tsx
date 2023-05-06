@@ -71,6 +71,7 @@ export const SpotifyActivity = () => {
 
     const trackId = data?.spotify?.track_id;
     const song = data?.spotify?.song;
+    const albumArt = data?.spotify?.album_art_url;
 
     return (
         <div
@@ -83,10 +84,10 @@ export const SpotifyActivity = () => {
             aria-disabled={!trackId}
         >
             <div className="flex justify-center bg-gray-700 rounded">
-                {data?.spotify && (
+                {albumArt && (
                     <Image
                         className="rounded-tl rounded-bl"
-                        src={data.spotify.album_art_url}
+                        src={albumArt}
                         width={35}
                         height={35}
                         alt="Album art"

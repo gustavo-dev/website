@@ -18,14 +18,14 @@ import {
 import { ListItem } from 'src/app/ListItem';
 import { PinnedRepo, ProjectCard } from 'src/app/ProjectCard';
 import { SpotifyActivity } from 'src/app/SpotifyActivity';
-import {differenceInYears} from "date-fns"
+import { differenceInYears } from 'date-fns';
 
 async function getData(): Promise<PinnedRepo[]> {
     const response = await fetch(
         `https://gh-pinned-repos.egoist.dev/?username=${process.env.VERCEL_GIT_REPO_OWNER}`,
         {
             next: {
-                revalidate: 60 * 60 * 24,
+                revalidate: 1 * 60,
             },
         }
     );
@@ -36,8 +36,8 @@ async function getData(): Promise<PinnedRepo[]> {
 export default async function Page() {
     const pinnedRepos = await getData();
 
-    const birth =  new Date('2003-12-28')
-    const age = differenceInYears(new Date(), birth)
+    const birth = new Date('2003-12-28');
+    const age = differenceInYears(new Date(), birth);
 
     return (
         <main className="mx-auto space-y-12 md:py-24">
@@ -72,8 +72,7 @@ export default async function Page() {
                 </div>
                 <h1 className="text-3xl font-bold">Hi! I'm Gustavo!</h1>
                 <p className="opacity-80">
-                    I'm a {age
-                    } years old software developer from Brazil. I'm
+                    I'm a {age} years old software developer from Brazil. I'm
                     really into full stack web development and problem solving
                     in general.
                 </p>
